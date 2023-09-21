@@ -8,11 +8,7 @@ This browser based web application to ...
 List team members and/or short bio's here... 
 * John's favourite drink is water
 * Jenny's favorite drink is pepsi zero
-<<<<<<< HEAD
 * Ash's gavorite drink is milk tea
-=======
-* jaospdifj
->>>>>>> c0756cf5afd673292d790d5ef93eb04d2f70c8d1
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
