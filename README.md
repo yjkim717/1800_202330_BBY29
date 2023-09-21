@@ -6,8 +6,7 @@ This browser based web application to ...
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
-* Hi, my name is John!
-* adsgliu\i
+* Hi, my name is Thao!
 * ...
 	
 ## 3. Technologies and Resources Used
