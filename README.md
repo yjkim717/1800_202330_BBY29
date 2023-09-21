@@ -6,7 +6,14 @@ This browser based web application to ...
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
+<<<<<<< HEAD
 * Hi My name is Ash
+=======
+* Hi, my name is John!
+* adsgliu\i
+* ...asdf
+* Hi, my Jenny. I need bubble tea
+>>>>>>> b49d232a56ee2c29c23e0e6dbe4eb9a112a5e793
 * ...
 * ...
 	
