@@ -6,12 +6,7 @@ This browser based web application to ...
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
-* Hi, my name is John!
-* adsgliu\i
-* ...asdfalfjkd
-* Hi, my Jenny. I need bubble tea
-* hello john! don't be stressed out!
-* ...
+* asldkjfheiogh
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
