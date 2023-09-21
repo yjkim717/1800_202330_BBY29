@@ -9,6 +9,9 @@ List team members and/or short bio's here...
 * Hi, my name is John!
 * adsgliu\i
 * ...asdfljk
+* Hi, my Jenny. I need bubble tea
+* ...
+* ...
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
