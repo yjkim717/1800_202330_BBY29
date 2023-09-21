@@ -6,10 +6,9 @@ This browser based web application to ...
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
-* Hi, my name is Thao! I want to sleep
-* thao's favourite drink is coffee
-* Hello my name is Jenny.
-* Where are you John
+* John's favourite drink is water
+* Jenny's favorite drink is pepsi zero
+* jaospdifj
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
