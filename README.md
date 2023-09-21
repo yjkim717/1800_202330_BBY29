@@ -6,11 +6,7 @@ This browser based web application to ...
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
-* asldkjfheiogh
-* New line
-* Hello my name is Jenny.
-* Where are you John
-* New LINE!!!!!!!!
+* John's favourite drink is water
 * Jenny's favorite drink is pepsi zero
 	
 ## 3. Technologies and Resources Used
