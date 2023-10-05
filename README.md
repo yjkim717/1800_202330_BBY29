@@ -8,6 +8,8 @@ This browser based web application to ...
 List team members and/or short bio's here... 
 * John's favourite drink is water
 * Jenny's favorite drink is pepsi zero
+* Ash's favorite drink is milk tea
+* Thao's favourite drink is coffee
 * Ash's gavorite drink is milk tea
 	
 ## 3. Technologies and Resources Used
