@@ -42,18 +42,39 @@
 
 body {
     background-color: #FFFFFF; /* Light shade for body background */
+    
 }
 
+/*
+-------------
+Homepage Description
+-------------
+*/ 
 .description{
+    /* 
+    I made it a grid to add a small section on the left for now
+    We can remove it if you want
+    */
     display: grid;
-    grid-template-columns: 10vw 90vw;
-    grid-template-rows: 80vh;
+    /* Self Note: Don't set column or row size to "auto", it messes up responsive design*/
+    grid-template-columns: 5% 95%;
+    grid-template-rows: 80%;
     grid-template-areas: 
         "leftSection rightSection";
-        
 }
 
-h1{
-    left:5vw;
+.description h1{
+    font-family: 'Pacifico';
+    width: 100%;
+    padding: 1%;
+    padding-top: 5%;
     position:relative;
+}
+
+.description p{
+    width: 100%;
+    padding: 2%;
+    padding-left: 7%;
+    overflow-wrap: break-word;
+    font-family: sans-serif;
 }
