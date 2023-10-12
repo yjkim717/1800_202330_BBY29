@@ -1,1 +1,14 @@
 
+.description{
+    display: grid;
+    grid-template-columns: 10vw 90vw;
+    grid-template-rows: 80vh;
+    grid-template-areas: 
+        "leftSection rightSection";
+        
+}
+
+h1{
+    left:5vw;
+    position:relative;
+}
