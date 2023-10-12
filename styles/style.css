@@ -1,1 +1,46 @@
+/*
+* --------------------------------------------
+* These are some styles of customizing
+* to over-ride the default bootstrap ones
+*---------------------------------------------
+*/
+
+/*Given Colors:
+*purple: #EADDFF
+*Pink: #FFD8E4
+*light GREY: #E6E0E9
+*Dark Purple: #D0BCFF
+*Dark Grey: #625B71
+*/
+
+.navbar-brand{
+    font-family: 'Pacifico'; /*change the font name for what you have*/
+    font-size: 2.25rem;
+}
+
+.bg-info {
+    background-color: #E6E0E9 !important; /* Medium shade for navbar */
+}
+
+.navbar-light .navbar-brand, .navbar-light .navbar-nav .nav-link {
+    color: #000000; /* Light shade for brand name & nav links for contrast */
+}
+
+.btn-info {
+    color: #AFBED1; /* Light shade for text on info button */
+    background-color: #7FBEEB; /* Accent color for button background */
+    border-color: #7FBEEB; /* Dark shade for button border */
+}
+
+.btn-primary {
+    color: #EAC5D8; /* Light shade for text */
+    font-size: 150%;
+    background-color: #AFBED1; /* Dark shade for primary button background */
+    border-color: #7FBEEB; /* Darkest shade for border */
+    border-width: thick;
+}
+
+body {
+    background-color: #FFFFFF; /* Light shade for body background */
+}
 
