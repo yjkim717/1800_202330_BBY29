@@ -33,10 +33,10 @@
 }
 
 .btn-primary {
-    color: #EAC5D8; /* Light shade for text */
+    color: #D0BCFF; /* Light shade for text */
     font-size: 150%;
     background-color: #AFBED1; /* Dark shade for primary button background */
-    border-color: #7FBEEB; /* Darkest shade for border */
+    border-color: #EADDFF; /* Darkest shade for border */
     border-width: thick;
 }
 
