@@ -78,3 +78,55 @@ Homepage Description
     overflow-wrap: break-word;
     font-family: sans-serif;
 }
+
+/* some call to action*/
+
+
+        /* Style for the popup container */
+
+        .popup-container {
+            font-family: Arial, sans-serif;
+            position: fixed;
+            top: 20%;
+            left: 20%;
+            width: 60%;
+            background-color: #fff;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .popup-header {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .restaurant-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .restaurant-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        .btn-request {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn-request:hover {
+            background-color: #333;
+        }
