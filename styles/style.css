@@ -130,3 +130,19 @@ Homepage Description
         .btn-request:hover {
             background-color: #333;
         }
+/*
+--------------
+    Footer 
+--------------
+*/
+.footer {
+    background-color: #D0BCFF;
+    width : 100vw;
+    position: absolute;
+    bottom: 0vh;
+    padding: 2vw;
+}
+
+.footer footer{
+    
+}
