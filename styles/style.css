@@ -78,3 +78,20 @@ Homepage Description
     overflow-wrap: break-word;
     font-family: sans-serif;
 }
+
+/*
+--------------
+    Footer 
+--------------
+*/
+.footer {
+    background-color: #D0BCFF;
+    width : 100vw;
+    position: absolute;
+    bottom: 0vh;
+    padding: 2vw;
+}
+
+.footer footer{
+    
+}
