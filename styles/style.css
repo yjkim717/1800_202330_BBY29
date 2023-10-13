@@ -141,6 +141,7 @@ Homepage Description
     position: absolute;
     bottom: 0vh;
     padding: 2vw;
+    margin-bottom:0vh !important;
 }
 
 .footer footer{
