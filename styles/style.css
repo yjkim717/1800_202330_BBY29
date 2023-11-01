@@ -41,8 +41,11 @@
 }
 
 body {
-    background-color: #FFFFFF; /* Light shade for body background */
-    
+    /* background-color: #FFFFFF; Light shade for body background */
+    background-image: url('../images/background.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
 }
 
 /*
