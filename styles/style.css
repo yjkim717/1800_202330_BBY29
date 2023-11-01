@@ -14,38 +14,40 @@
 */
 
 .navbar-brand{
-    font-family: 'Pacifico'; /*change the font name for what you have*/
-    font-size: 2.25rem;
+font-family: 'Pacifico'; /*change the font name for what you have*/
+font-size: 2.25rem;
 }
 
 .bg-info {
-    background-color: #E6E0E9 !important; /* Medium shade for navbar */
+background-color: #E6E0E9 !important; /* Medium shade for navbar */
 }
 
 .navbar-light .navbar-brand, .navbar-light .navbar-nav .nav-link {
-    color: #000000; /* Light shade for brand name & nav links for contrast */
+color: #000000; /* Light shade for brand name & nav links for contrast */
 }
 
 .btn-info {
-    color: #AFBED1; /* Light shade for text on info button */
-    background-color: #7FBEEB; /* Accent color for button background */
-    border-color: #7FBEEB; /* Dark shade for button border */
+color: #AFBED1; /* Light shade for text on info button */
+background-color: #7FBEEB; /* Accent color for button background */
+border-color: #7FBEEB; /* Dark shade for button border */
 }
 
 .btn-primary {
-    color: #D0BCFF; /* Light shade for text */
-    font-size: 150%;
-    background-color: #AFBED1; /* Dark shade for primary button background */
-    border-color: #EADDFF; /* Darkest shade for border */
-    border-width: thick;
+color: #D0BCFF; /* Light shade for text */
+font-size: 150%;
+background-color: #AFBED1; /* Dark shade for primary button background */
+border-color: #EADDFF; /* Darkest shade for border */
+border-width: thick;
 }
 
 body {
-    /* background-color: #FFFFFF; Light shade for body background */
-    background-image: url('../images/background.jpg');
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    background-attachment: fixed;
+/* background-color: #FFFFFF; Light shade for body background */
+background-image: url('../images/background.jpg');
+background-size: cover; 
+background-repeat: no-repeat; 
+background-attachment: fixed;
+width:100vw;
+height:100vh;
 }
 
 /*
@@ -54,99 +56,107 @@ Homepage Description
 -------------
 */ 
 .description{
-    /* 
-    I made it a grid to add a small section on the left for now
-    We can remove it if you want
-    */
-    display: grid;
-    /* Self Note: Don't set column or row size to "auto", it messes up responsive design*/
-    grid-template-columns: 5% 95%;
-    grid-template-rows: 80%;
-    grid-template-areas: 
-        "leftSection rightSection";
+/* 
+I made it a grid to add a small section on the left for now
+We can remove it if you want
+*/
+display: grid;
+/* Self Note: Don't set column or row size to "auto", it messes up responsive design*/
+grid-template-columns: 5% 95%;
+grid-template-rows: 80%;
+grid-template-areas: 
+    "leftSection rightSection";
 }
 
 .description h1{
-    font-family: 'Pacifico';
-    width: 100%;
-    padding: 1%;
-    padding-top: 5%;
-    position:relative;
+font-family: 'Pacifico';
+width: 100%;
+padding: 1%;
+padding-top: 5%;
+position:relative;
 }
 
 .description p{
-    width: 100%;
-    padding: 2%;
-    padding-left: 7%;
-    overflow-wrap: break-word;
-    font-family: sans-serif;
+width: 100%;
+padding: 2%;
+padding-left: 7%;
+overflow-wrap: break-word;
+font-family: sans-serif;
 }
 
-/* some call to action*/
+#logo{
+display:flex;
+justify-content: center;
+padding: 40%;
+width:100%;
+}
+#logo-text{
+font-family: 'Pacifico'; /*change the font name for what you have*/
+font-size: 2.5rem;
+}
 
+/* Style for the popup container */
 
-        /* Style for the popup container */
+.popup-container {
+    font-family: Arial, sans-serif;
+    position: fixed;
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    background-color: #fff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+}
 
-        .popup-container {
-            font-family: Arial, sans-serif;
-            position: fixed;
-            top: 20%;
-            left: 20%;
-            width: 60%;
-            background-color: #fff;
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 20px;
-        }
+.popup-header {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+    
+.restaurant-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
 
-        .popup-header {
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
+.restaurant-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
 
-        .restaurant-list {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
+.btn-request {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+}
 
-        .restaurant-item {
-            display: flex;
-            justify-content: space-between;
-            margin: 10px 0;
-        }
-
-        .btn-request {
-            display: block;
-            width: 100%;
-            padding: 10px 15px;
-            background-color: #000;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            text-align: center;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
-        .btn-request:hover {
-            background-color: #333;
-        }
+.btn-request:hover {
+    background-color: #333;
+}
 /*
 --------------
-    Footer 
+Footer 
 --------------
 */
 .footer {
-    background-color: #D0BCFF;
-    width : 100vw;
-    position: absolute;
-    bottom: 0vh;
-    padding: 2vw;
-    margin-bottom:0vh !important;
+background-color: #D0BCFF;
+width : 100vw;
+position: absolute;
+bottom: 0vh;
+padding: 2vw;
+margin-bottom:0vh !important;
 }
 
 .footer footer{
-    
+
 }
