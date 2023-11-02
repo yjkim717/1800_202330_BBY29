@@ -18,6 +18,11 @@ font-family: 'Pacifico'; /*change the font name for what you have*/
 font-size: 2.25rem;
 }
 
+@font-face {
+    font-family: Pacifico;
+    src: url("/resource/fonts/Pacifico-Regular.ttf");
+}
+
 .bg-info {
 background-color: #E6E0E9 !important; /* Medium shade for navbar */
 }
