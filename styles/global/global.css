@@ -42,7 +42,7 @@ border-width: thick;
 
 body {
 /* background-color: #FFFFFF; Light shade for body background */
-background-image: url('../images/background.jpg');
+
 background-size: cover; 
 background-repeat: no-repeat; 
 background-attachment: fixed;
@@ -84,16 +84,7 @@ overflow-wrap: break-word;
 font-family: sans-serif;
 }
 
-#logo{
-display:flex;
-justify-content: center;
-padding: 40%;
-width:100%;
-}
-#logo-text{
-font-family: 'Pacifico'; /*change the font name for what you have*/
-font-size: 2.5rem;
-}
+
 /*
  * MAP!!!!!!!!!!!!!!!!!!
  */

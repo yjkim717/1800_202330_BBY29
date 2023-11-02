@@ -1,0 +1,19 @@
+body {
+    background-image: url('/resource/images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#logo {
+    display: flex;
+    justify-content: center;
+    padding: 40%;
+    width: 100%;
+}
+
+#logo-text {
+    font-family: 'Pacifico';
+    /*change the font name for what you have*/
+    font-size: 2.5rem;
+}
