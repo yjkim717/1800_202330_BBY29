@@ -3,17 +3,20 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    position: relative;
 }
 
-#logo {
-    display: flex;
-    justify-content: center;
-    padding: 40%;
-    width: 100%;
+#content {
+    position:absolute;
+    top:50%;
+    transform: translateY(-50%);
 }
+
 
 #logo-text {
     font-family: 'Pacifico';
     /*change the font name for what you have*/
     font-size: 2.5rem;
 }
+
+    

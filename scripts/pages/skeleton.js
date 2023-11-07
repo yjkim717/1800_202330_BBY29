@@ -13,5 +13,3 @@ function insertFooterDefault(){
     $("#put-footer-here").load("/components/footer.html")
 }
 
-insertNavbarDefault();
-insertFooterDefault();

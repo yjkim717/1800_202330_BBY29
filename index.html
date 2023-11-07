@@ -28,15 +28,31 @@
     
     <nav id="put-navbar-here"></nav>
 
-    <div id="logo">
-        <span id="logo-text">
-            Line Up
-        </span>
+
+    <div class="container-fluid d-flex flex-column justify-content-center align-items-center" id="content">
+        <div class="jumbotron" id="logo">
+            <h1 class="display-4" id="logo-text">Line Up</h1>
+        </div>
+        <div class="container pt-3" id="user-info">
+            <div class="form-group d-flex justify-content-center pb-1">
+                <input type="username" class="form-control w-50 " id="username" placeholder="Enter name" name="name">
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <input type="text" class="form-control w-50 " id="number" placeholder="Enter phone #" name="number" pattern="[0-9]{10,11}">
+            </div>
+        </div>
     </div>
+
+
+
 
     <nav id="put-footer-here"></nav>
     
     <script src="/scripts/pages/skeleton.js"></script>
+    <script>
+        insertNavbarDefault();
+        insertFooterDefault();
+    </script>
 </body>
 
 </html>
