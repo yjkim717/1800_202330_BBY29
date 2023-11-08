@@ -32,20 +32,30 @@
     <link rel="stylesheet" href="./styles/pages/index.css">
 </head>
 <body>
-    
     <nav id="put-navbar-here"></nav>
 
-    <div id="logo">
-        <span id="logo-text">
-            Line Up
-        </span>
+
+    <div class="container-fluid d-flex flex-column justify-content-center align-items-center" id="content">
+        <div class="jumbotron" id="logo">
+            <h1 class="display-4" id="logo-text">Line Up</h1>
+        </div>
+        <div class="container-fluid" id="put-login-here"></div>
     </div>
 
-    <nav id="put-footer-here"></nav>
 
+
+
+    <nav id="put-footer-here"></nav>
     
+
     <script src="./scripts/firebaseAPI.js"></script>
     <script src="/scripts/pages/skeleton.js"></script>
+    <script src="./scripts/authentication.js"></script>
+    <script>
+        insertNavbarDefault();
+        insertFooterDefault();
+        insertLogin();
+    </script>
 </body>
 
 </html>
