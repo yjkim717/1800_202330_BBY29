@@ -22,9 +22,6 @@ function lineup() {
         number,
         status
     })
-    // posterID.update({
-    //     myrequest: firebase.firestore.FieldValue.arrayUnion()
-    // })
 }
 
 //TODO: when readSignup call change the status to false and remove from db
@@ -35,4 +32,3 @@ function readSignup() {
     let number = document.getElementById("numberOfPeople").value;
     let status = false;
 }
-
