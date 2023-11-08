@@ -1,22 +1,27 @@
-var currentUser;
+let user = firebase.auth().currentUser;
 
 if (user) {
-    db.collection("signup").add({
-        singUpId: singUpId,
-        posterID: uid,
-        restaurantID: rid,
-        number: number,
-        status: true
-    })
-}
-function writeSignup() {
-    console.log("write signup");
-    let posterID = db.collection("users").doc(user.uid);
-    let restaurantID = db.collection("restaurants").doc(restaurant.rid);
-    let number = document.getElementById("numberOfPeople").value;
-    let status = true;
-    //TODO:user myRequst list add the signupID
+    lineup();
+} else {
 
+}
+
+function lineup() {
+    let posterID = db.collection("users").doc(user.uid);
+    let number = document.getElementById("numberOfPeople").value;
+
+    //TODO: Grab array of restaurants selected from signup popup
+    // TODO: Loop the bottom code for each restaurant
+    let restaurantID = db.collection("restaurants").doc(restaurant.rid);
+    let status = true;
+    //Grab # of people from lineup popup
+    db.collection("signup").add({
+        signupID: Math.floor(Math.random() * 1000),
+        posterID,
+        restaurantID,
+        number,
+        status
+    })
 }
 
 //TODO: when readSignup call change the status to false and remove from db
@@ -27,4 +32,3 @@ function readSignup() {
     let number = document.getElementById("numberOfPeople").value;
     let status = false;
 }
-
