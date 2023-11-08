@@ -22,6 +22,7 @@ function lineup() {
         number,
         status
     })
+    
 }
 
 //TODO: when readSignup call change the status to false and remove from db
