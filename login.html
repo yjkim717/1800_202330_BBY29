@@ -39,21 +39,7 @@
         <div class="jumbotron" id="logo">
             <h1 class="display-4" id="logo-text">Line Up</h1>
         </div>
-
-        <!-- I HAVE TO FIX THIS PART -->
-        <div class="container pt-3" id="user-info">
-            <form id="login-form">  
-                <div class="form-group d-flex flex-column align-items-center gap-2 pb-1" >
-                    <input type="email" class="form-control w-50 " id="email" placeholder="Enter email" name="email">
-                    <input type="password" class="form-control w-50 " id="password" placeholder="Enter password" name="password">
-                    <input type="username" class="form-control w-50 " id="name" placeholder="Enter name" name="name">
-                    <input type="text" class="form-control w-50 " id="number" placeholder="Enter phone #" name="number" pattern="[0-9]{10,11}">
-                    <button type="button" class="btn" onclick="authenticate()">Sign up</button>
-                </div>
-            </form>
-            
-        </div>
-        
+        <div class="container-fluid" id="put-login-here"></div>
     </div>
 
 
@@ -68,6 +54,7 @@
     <script>
         insertNavbarDefault();
         insertFooterDefault();
+        insertLogin();
     </script>
 </body>
 
