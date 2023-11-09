@@ -2,14 +2,16 @@
     <div class="popup-header">Line up!</div>
     <p>Restaurants near your location!</p>
     <form id="popupForm">
-        <div class="form-group" id="popupFormContainer">
+        <div class="form-group d-flex flex-column" id="popupFormContainer">
         </div>
     </form>
     <template id="restaurantPopup">
         <div class="container-fluid d-flex flex-row justify-content-between">
-            <span class="restaurantOption"></span>
+            <span id="restaurantOption"></span>
             <input class="form-check-input" type="checkbox" value="checked">
         </div>
     </template>
     <button class="btn-request">Request</button>
 </div>
+
+<script src="/components/listpopup.html"></script>
