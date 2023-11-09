@@ -19,6 +19,7 @@ function login() {
             }
             console.log(error);
         });
+    window.location.href = "/search.html";
 }
 
 function signup() {

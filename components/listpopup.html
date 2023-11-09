@@ -6,12 +6,17 @@
         </div>
     </form>
     <template id="restaurantPopup">
-        <div class="container-fluid d-flex flex-row justify-content-between">
+        <div class="container d-flex flex-row justify-content-between">
             <span id="restaurantOption"></span>
-            <input class="form-check-input" type="checkbox" value="checked">
+            <input class="form-check-input btn-primary selectRestaurant" type="checkbox" value="checked" id="restBut" data-id="">
         </div>
     </template>
-    <button class="btn-request">Request</button>
+    <input type="number" id="numberOfPeople" value="1">
+    <button class="btn-request" onclick="lineup()">Request</button>
 </div>
 
-<script src="/components/listpopup.html"></script>
+<script src="/scripts/components/signup.js"></script>
+<script src="/scripts/components/listpopup.js"></script>
+<script>
+    loadList();
+</script>
