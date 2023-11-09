@@ -2,7 +2,7 @@
 
 function lineup() {
     let user = firebase.auth().currentUser;
-    
+
     if (!user) {
         console.log("NOT USER SIGNEDD IN");
         return;
@@ -21,8 +21,24 @@ function lineup() {
             number,
             status: true
         })
-        
+
     });
+    db.collection("signup").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            let use = db.collection("users").doc(user.uid);
+            let list = [];
+            use.get().then((doc) => {
+                console.log(doc.data().myrequest);
+                list = doc.data().myrequest;
+            })
+            list.push(doc.id);
+            use.update({
+                myrequest: list
+            }).then(() => {
+                console.log("Success");
+                })
+        })
+    })
 }
 
 //TODO: when readSignup call change the status to false and remove from db
