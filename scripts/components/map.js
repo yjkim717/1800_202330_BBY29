@@ -62,25 +62,36 @@ function initMap() {
     const searchBox = new google.maps.places.SearchBox(searchInput);
 
     //TODO: After Search Inserted
-    // map.addListener('bounds_changed', () => {
-    //     searchBox.setBounds(map.getBounds());
-    // });
-    //
-    // searchBox.addListener('places_changed', () => {
-    //     const places = searchBox.getPlaces();
-    //
-    //     if (places.length === 0) {
-    //         return;
-    //     }
-    //
-    //     const place = places[0];
-    //
-    //     if (place.geometry && place.geometry.location) {
-    //         map.panTo(place.geometry.location);
-    //         map.setZoom(15);
-    //     }
-    // });
+    map.addListener('bounds_changed', () => {
+        searchBox.setBounds(map.getBounds());
+    });
+
+    searchBox.addListener('places_changed', () => {
+        const places = searchBox.getPlaces();
+
+        if (places.length === 0) {
+            return;
+        }
+
+        const place = places[0];
+
+        if (place.geometry && place.geometry.location) {
+            map.panTo(place.geometry.location);
+            map.setZoom(15);
+        }
+    });
 }
+
+const openListPopupButton = document.getElementById('openListPopup');
+
+openListPopupButton.addEventListener('click', () => {
+    openListPopup();
+});
+
+function openListPopup() {
+    window.open('listpopup.html', '_blank', 'width=600,height=400');
+}
+
 
 loadGoogleMapsAPI().then(() => {
     initMap();
