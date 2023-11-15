@@ -85,7 +85,8 @@ function initMap() {
 const openListPopupButton = document.getElementById('openListPopup');
 
 openListPopupButton.addEventListener('click', () => {
-    openListPopup();
+    console.log(document.body);
+    document.body.appendChild()
 });
 
 function openListPopup() {
