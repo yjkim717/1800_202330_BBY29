@@ -1,0 +1,1 @@
+- Make event handler for search button on map
