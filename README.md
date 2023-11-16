@@ -21,6 +21,10 @@ Folder Structure:
     -img
     -font
     -js
+
+Additional Notes:
+    -Use window.location.href when synchronously reloading an entire page (redirecting to different page)
+    -Use http request when asynchronously rendering a component
     
 ChatGPT definition of app and public:
 
