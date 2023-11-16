@@ -9,13 +9,13 @@ Libraries:
     Frontend = bootstrap
 
 Folder Structure:
--app (dynamically rendered files)
+-app (dynamically rendered files that are "server owned")
     -data(json, xml, etc.)
     -pages
     -js
         -client.js (fetch)
         -pages (render components)
--public (Static files)
+-public (Static files for clients)
     -components
     -css
     -img
