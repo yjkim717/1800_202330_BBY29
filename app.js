@@ -21,6 +21,11 @@ app.get("/login", function (req, res) {
     res.send(doc);
 });
 
+app.get("/components/navbar.html", function(req, res){
+    let doc = fs.readFileSync("/public/components/navbar.html", "utf8");
+    res.send(doc);
+});
+
 let port = 8000;
 app.listen(port, function () {
     console.log("Example app listening on port " + port + "!");

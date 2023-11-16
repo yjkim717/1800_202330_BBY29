@@ -1,36 +1,62 @@
 console.log("pages.js start loading");
-function loginPage() {
-    window.localStorage.setItem("authStyle", "login");
-    window.location.href = "./login.html";
-}
 
-function signupPage() {
-    window.localStorage.setItem("authStyle", "signup");
-    window.location.href = "./login.html";
-}
-
-console.log("Start login and signup render");
-let login = document.getElementById('loginButton');
-let signup = document.getElementById('signupButton');
-login.addEventListener("click", function (e) {
-    console.log("Login event start");
-    window.location.href = "http://localhost:8000/login";
-    let url = new URL(window.location.href);
-    let search_params = url.searchParams;
-    search_params.set("authStyle", "login");
-    console.log("Login event end");
-})
-signup.addEventListener("click", function (e) {
-    console.log("Signup event start");
-    window.location.href = "/login";
-    let url = new URL(window.location.href);
-    let search_params = url.searchParams;
-    search_params.set("authStyle", "signup");
-    console.log("Login event end");
-})
+/**
+ * Adds event listeners to login and sign up buttons. It 
+ * redirects window to login.html, which 
+ */
 function doAllIndex() {
+    console.log("Start index");
+    insertNavbar();
+    insertFooter();
+    let login = document.getElementById('loginButton');
+    let signup = document.getElementById('signupButton');
 
+    login.addEventListener("click", function (e) {
+        console.log("Login event start");
+        window.location.href = domain + "/login?authStyle=login";
+        console.log("Login event end");
+    })
+    signup.addEventListener("click", function (e) {
+        console.log("Signup event start");
+        window.location.href = "/login?authStyle=signup";
+        console.log("Login event end");
+    })
+    console.log("End Index");
 }
-doAllIndex();
+/** 
+ * Inserts navbar 
+ */
+function insertNavbar() {
+    console.log("Navbar insertion start");
+    let nav = document.getElementById("putNavbarHere");
+    ajaxGET("/components/navbar.html", function(data){
+        nav.innerHTML = data;
+        console.log("navbar inserted");
+    });
+    console.log("Navbar insertion end");
+}
+/** 
+ * Inserts footer 
+ */
+function insertFooter() {
+    console.log("Footer insertion start");
+    let footer = document.getElementById("putFooterHere");
+    ajaxGET("/components/footer.html", function(data){
+        footer.innerHTML = data;
+        console.log("footer inserted");
+    });
+    console.log("Footer insertion end");
+}
+
+/**
+ * Insert login/signup 
+ */
+function insertLogin() {
+    if ((window.localStorage.getItem("authStyle") ?? "login") === "login"){
+        $("#put-login-here").load("/components/login.html");
+    }else{
+        $("#put-login-here").load("/components/signup.html");
+    }
+}
 
 console.log("pages.js end loading");
