@@ -82,6 +82,7 @@ function initMap() {
     });
 }
 
+
 const openListPopupButton = document.getElementById('openListPopup');
 
 openListPopupButton.addEventListener('click', () => {
