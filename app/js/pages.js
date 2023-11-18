@@ -13,9 +13,7 @@ function doAllIndex() {
     let signup = document.getElementById('signupButton');
 
     login.addEventListener("click", function (e) {
-        console.log("Login event start");
         window.location.href = domain + "/entry?authStyle=login";
-        console.log("Login event end");
     })
     signup.addEventListener("click", function (e) {
         console.log("Signup event start");
@@ -35,34 +33,33 @@ function doAllEntry() {
     if (search_param.get("authStyle") === "login") {
         ajaxGET("/components/login.html", function (data) {
             login.innerHTML = data;
-            let userInfo = document.getElementById("userInfo");
-            if (userInfo) {
-                console.log("Login loaded");
-                let loginSubmitButton = document.getElementById("loginSubmitButton");
-                if (loginSubmitButton) {
-                    loginSubmitButton.addEventListener("click", function (e) {
-                        alert("Clicked");
-                        window.location.href = domain + "/map";
-                    });
-                } else {
-                    console.log("Login submit button not found");
-                }
-            } else {
-                console.log("Login element not found");
-            }
+            addButtonToMap("loginSubmitButton");
         })
     } else if (search_param.get("authStyle") === "signup") {
         ajaxGET("/components/signup.html", function (data) {
             login.innerHTML = data;
-            console.log("signup inserted");
-        }).then(data => {
-            let signup = document.getElementById("signupSubmitButton");
-            signup.addEventListener("click", function (e) {
-                window.location.href = domain + "/map";
-            });
+            addButtonToMap("signupSubmitButton");
         });
     } else {
         console.log("Failed");
+    }
+}
+/**
+ * 
+ */
+function addButtonToMap(button) {
+    let userInfo = document.getElementById("userInfo");
+    if (userInfo) {
+        let signupSubmitButton = document.getElementById(button);
+        if (signupSubmitButton) {
+            signupSubmitButton.addEventListener("click", function (e) {
+                window.location.href = domain + "/map";
+            });
+        } else {
+            console.log("signup submit button not found");
+        }
+    } else {
+        console.log("signup element not found");
     }
 }
 
