@@ -1,4 +1,0 @@
-/*
- * js entry point 
- */
-
