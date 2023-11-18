@@ -3,7 +3,8 @@ let htmlAlias =
 {
     //entry.html
     entry: "entry",
-    index: "index"
+    index: "index",
+    popuplist: "popup"
 }
 
 // variables

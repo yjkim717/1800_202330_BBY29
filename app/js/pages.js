@@ -45,7 +45,7 @@ function doAllEntry() {
     }
 }
 /**
- * 
+ * Helper function of doAllEntry()
  */
 function addButtonToMap(button) {
     let userInfo = document.getElementById("userInfo");
@@ -67,54 +67,22 @@ function addButtonToMap(button) {
  * Inserts navbar 
  */
 function insertNavbar() {
-    console.log("Navbar insertion start");
     let nav = document.getElementById("putNavbarHere");
     ajaxGET("/components/navbar.html", function (data) {
         nav.innerHTML = data;
-        console.log("navbar inserted");
     });
-    console.log("Navbar insertion end");
 }
 
 /** 
  * Inserts footer 
  */
 function insertFooter() {
-    console.log("Footer insertion start");
     let footer = document.getElementById("putFooterHere");
     ajaxGET("/components/footer.html", function (data) {
         footer.innerHTML = data;
-        console.log("footer inserted");
     });
-    console.log("Footer insertion end");
 }
 
-/**
- * Redirect to map after clicking login/signup button in entry.html
- * 
- * linked in:
- *  -login.html
- *  -signup.html
- */
-function goToMap() {
-    let url = new URL(window.location.href);
-    let search_param = url.searchParams;
-    if (search_param.get("authStyle") === "login") {
-        let login = document.getElementById("loginSubmitButton");
-        login.addEventListener("click", function (e) {
-            alert("alsdkfhijawoge");
-            window.location.href = domain + "/map";
-        });
-    } else if (search_param.get("authStyle") === "signup") {
-        let signup = document.getElementById("signupSubmitButton");
-        signup.addEventListener("click", function (e) {
-            window.location.href = domain + "/map";
-        });
-    } else {
-        console.log("Failed");
-    }
-
-}
 
 
 console.log("pages.js end loading");

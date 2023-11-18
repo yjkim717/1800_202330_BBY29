@@ -1,3 +1,11 @@
+let htmlAlias =
+{
+    //entry.html
+    entry: "entry",
+    index: "index",
+    popuplist: "popup"
+}
+
 // REQUIRES
 const express = require("express");
 const app = express();
@@ -38,6 +46,11 @@ app.get("/components/login.html", function(req, res){
 
 app.get("/components/signup.html", function(req, res){
     let doc = fs.readFileSync("/public/components/signup.html", "utf8");
+    res.send(doc);
+});
+
+app.get("/components/" + htmlAlias.popuplist + ".html", function(req, res){
+    let doc = fs.readFileSync("/public/components/" + htmlAlias.popuplist + ".html", "utf8");
     res.send(doc);
 });
 
