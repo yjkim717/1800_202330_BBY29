@@ -5,11 +5,15 @@
             <input type="password" class="form-control w-50 " id="password" placeholder="Enter password" name="password">
             <input type="username" class="form-control w-50 " id="name" placeholder="Enter name" name="name">
             <input type="text" class="form-control w-50 " id="number" placeholder="Enter phone #" name="number" pattern="[0-9]{10,11}">
-            <button type="button" class="btn" onclick="signup()">Sign up</button>
+            <button id="signupSubmitButton" type="button" class="btn">Sign up</button>
         </div>
     </form>
 </div>
 
-<script src="./scripts/firebaseAPI.js"></script>
-<script src="/scripts/pages/skeleton.js"></script>
-<script src="./scripts/authentication.js"></script>
+
+<script src="/js/global.js"></script>
+<script src="/js/pages.js"></script>
+<script>
+    alert("test");
+    goToMap();
+</script>

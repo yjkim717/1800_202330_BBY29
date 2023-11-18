@@ -16,8 +16,13 @@ app.get("/", function (req, res) {
     res.send(doc);
 });
 
-app.get("/login", function (req, res) {
-    let doc = fs.readFileSync("./app/html/login.html", "utf8");
+app.get("/entry", function (req, res) {
+    let doc = fs.readFileSync("./app/html/entry.html", "utf8");
+    res.send(doc);
+});
+
+app.get("/map", function (req, res) {
+    let doc = fs.readFileSync("./app/html/map.html", "utf8");
     res.send(doc);
 });
 

@@ -1,15 +1,33 @@
+let globalLoaded = "global.js loaded";
+let htmlAlias =
+{
+    //entry.html
+    entry: "entry",
+    index: "index"
+}
+
+// variables
 let domain = "http://localhost:8000";
 
 
-function ajaxGET(url, callback){
+// Functions
+function ajaxGET(url, callback) {
     const xhr = new XMLHttpRequest();
-    xhr.onload = function() {
-        if (this.readyState == XMLHttpRequest.DONE && this.status == 200){
+    xhr.onload = function () {
+        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
             callback(this.responseText);
-        }else{
+        } else {
             console.log(this.status);
         }
     }
     xhr.open("GET", url);
-    xhr.send(); 
+    xhr.send();
+    // return new Promise(function (myResolve, myReject) {
+    //     if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200){
+    //         myResolve(); 
+    //     } else {
+    //         myReject(); 
+    //     }
+    // });
 }
+

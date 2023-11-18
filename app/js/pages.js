@@ -1,4 +1,5 @@
 console.log("pages.js start loading");
+console.log(globalLoaded);
 
 /**
  * Adds event listeners to login and sign up buttons. It 
@@ -13,12 +14,12 @@ function doAllIndex() {
 
     login.addEventListener("click", function (e) {
         console.log("Login event start");
-        window.location.href = domain + "/login?authStyle=login";
+        window.location.href = domain + "/entry?authStyle=login";
         console.log("Login event end");
     })
     signup.addEventListener("click", function (e) {
         console.log("Signup event start");
-        window.location.href = "/login?authStyle=signup";
+        window.location.href = domain + "/entry?authStyle=signup";
         console.log("Login event end");
     })
     console.log("End Index");
@@ -27,7 +28,7 @@ function doAllIndex() {
 /**
  * Insert login/signup 
  */
-function doAllLogin() {
+function doAllEntry() {
     let url = new URL(window.location.href);
     let search_param = url.searchParams;
     let login = document.getElementById("putLoginHere");
@@ -44,6 +45,12 @@ function doAllLogin() {
     } else {
         console.log("Failed");
     }
+    return new Promise(function (myResolve, myReject) {
+        // "Producing Code" (May take some time)
+
+        myResolve(); // when successful
+        myReject();  // when error
+    });
 }
 
 /** 
@@ -72,6 +79,30 @@ function insertFooter() {
     console.log("Footer insertion end");
 }
 
+/**
+ * Redirect to map after clicking login/signup button in entry.html
+ * 
+ * linked in:
+ *  -login.html
+ *  -signup.html
+ */
+function goToMap(){
+    let url = new URL(window.location.href);
+    let search_param = url.searchParams;
+    if (search_param.get("authStyle") === "login") {
+        let login = document.getElementById("loginSubmitButton");
+        login.addEventListener("click", function(e){
+            window.location.href = domain + "/map";
+        });
+    } else if (search_param.get("authStyle") === "signup") {
+        let signup = document.getElementById("signupSubmitButton");
+        signup.addEventListener("click", function(e){
+            window.location.href = domain + "/map";
+        });
+    } else {
+        console.log("Failed");
+    }
+}
 
 
 console.log("pages.js end loading");
