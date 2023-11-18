@@ -4,8 +4,8 @@ const apiKey = 'AIzaSyB8hXbq6-lLvbZ8-yUhPxL2jKgADB4Bf04';
  * PopList
  */
 function openList() {
-    let popupList = document.getElementById("insertPopupHere");
-    let searchButton = document.getElementById("searchButton");
+    let popupList = document.getElementById(elements.restaurantList.placeholder);
+    let searchButton = document.getElementById(elements.search.elements.searchButton);
     searchButton.addEventListener("click", function (e) {
         ajaxGET("/components/" + htmlAlias.popuplist + ".html", function (data) {
             //Grab element in popup.html to check if its dom is loaded

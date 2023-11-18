@@ -1,9 +1,9 @@
-#map {
+#putMapHere {
     height: 100%;
     width: 100%;
 }
 
-#search-bar {
+#searchBar {
     margin: 10px;
     padding: 5px;
     width: 300px;
@@ -17,6 +17,6 @@
     display: none;
 }
 
-#map #infowindow-content {
+#putMapHere #infowindow-content {
     display: inline;
 }

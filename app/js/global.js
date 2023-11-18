@@ -64,7 +64,7 @@ let elements =
         elements: undefined
     }, 
     restaurantList: {
-        placeholder: undefined,
+        placeholder: "putRestaurantHere",
         container: undefined,
         elements: undefined
     }, 
