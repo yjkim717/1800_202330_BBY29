@@ -35,6 +35,7 @@
         <script src="/js/firebaseAPI.js"></script>
     </div>
 
+    <link rel="stylesheet" href="/css/global.css">
     <link rel="stylesheet" href="/css/pages/map.css">
 
 </head>
@@ -51,11 +52,7 @@
     <script src="/js/map.js"></script>
     <script>
         openList();
-        loadGoogleMapsAPI().then(() => {
-            initMap();
-        }).catch(error => {
-            console.error('Error loading Google Maps API:', error.message);
-        });
+        
     </script>
 </body>
 

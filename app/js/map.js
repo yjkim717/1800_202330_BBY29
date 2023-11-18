@@ -102,4 +102,10 @@ function initMap() {
     });
 }
 
+loadGoogleMapsAPI().then(() => {
+    initMap();
+}).catch(error => {
+    console.error('Error loading Google Maps API:', error.message);
+});
+
 
