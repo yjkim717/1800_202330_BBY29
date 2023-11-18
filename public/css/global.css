@@ -26,7 +26,11 @@ body {
 *Dark Grey: #625B71
 */
 
-
+#logoText {
+    font-family: 'Pacifico';
+    /*change the font name for what you have*/
+    font-size: 2.5rem;
+}
 
 @font-face {
     font-family: Pacifico;

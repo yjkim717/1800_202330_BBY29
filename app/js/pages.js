@@ -1,26 +1,22 @@
-console.log("pages.js start loading");
-console.log(globalLoaded);
+
+
+
 
 /**
  * Adds event listeners to login and sign up buttons. It 
  * redirects window to login.html, which 
  */
 function doAllIndex() {
-    console.log("Start index");
     insertNavbar();
     insertFooter();
-    let login = document.getElementById('loginButton');
-    let signup = document.getElementById('signupButton');
-
+    let login = document.getElementById(elements.login.elements.loginButton);
+    let signup = document.getElementById(elements.signup.elements.signupButton);
     login.addEventListener("click", function (e) {
         window.location.href = domain + "/entry?authStyle=login";
     })
     signup.addEventListener("click", function (e) {
-        console.log("Signup event start");
         window.location.href = domain + "/entry?authStyle=signup";
-        console.log("Login event end");
     })
-    console.log("End Index");
 }
 
 /**
@@ -29,16 +25,16 @@ function doAllIndex() {
 function doAllEntry() {
     let url = new URL(window.location.href);
     let search_param = url.searchParams;
-    let login = document.getElementById("putLoginHere");
+    let login = document.getElementById(elements.login.placeholder);
     if (search_param.get("authStyle") === "login") {
         ajaxGET("/components/login.html", function (data) {
             login.innerHTML = data;
-            addButtonToMap("loginSubmitButton");
+            addButtonToMap(elements.login.elements.loginSubmitButton, elements.login.container);
         })
     } else if (search_param.get("authStyle") === "signup") {
         ajaxGET("/components/signup.html", function (data) {
             login.innerHTML = data;
-            addButtonToMap("signupSubmitButton");
+            addButtonToMap(elements.signup.elements.signupSubmitButton, elements.signup.container);
         });
     } else {
         console.log("Failed");
@@ -47,8 +43,8 @@ function doAllEntry() {
 /**
  * Helper function of doAllEntry()
  */
-function addButtonToMap(button) {
-    let userInfo = document.getElementById("userInfo");
+function addButtonToMap(button, authStyle) {
+    let userInfo = document.getElementById(authStyle);
     if (userInfo) {
         let signupSubmitButton = document.getElementById(button);
         if (signupSubmitButton) {
@@ -67,7 +63,7 @@ function addButtonToMap(button) {
  * Inserts navbar 
  */
 function insertNavbar() {
-    let nav = document.getElementById("putNavbarHere");
+    let nav = document.getElementById(elements.navbar.placeholder);
     ajaxGET("/components/navbar.html", function (data) {
         nav.innerHTML = data;
     });
@@ -77,7 +73,7 @@ function insertNavbar() {
  * Inserts footer 
  */
 function insertFooter() {
-    let footer = document.getElementById("putFooterHere");
+    let footer = document.getElementById(elements.footer.placeholder);
     ajaxGET("/components/footer.html", function (data) {
         footer.innerHTML = data;
     });

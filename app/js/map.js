@@ -33,7 +33,7 @@ async function loadGoogleMapsAPI() {
 }
 
 function initMap() {
-    const map = new google.maps.Map(document.getElementById('map'), {
+    const map = new google.maps.Map(document.getElementById('putMapHere'), {
         center: { lat: 49.2827, lng: -123.1207 }, //vancouver
         zoom: 13,
         //try to change it to greyscale.. need to work more
@@ -78,7 +78,7 @@ function initMap() {
         console.error('Geolocation is not supported by this browser.');
     }
 
-    const searchInput = document.getElementById('search-bar');
+    const searchInput = document.getElementById('searchBar');
     const searchBox = new google.maps.places.SearchBox(searchInput);
     
     //TODO: After Search Inserted
