@@ -36,7 +36,7 @@ function lineup() {
                 myrequest: list
             }).then(() => {
                 console.log("Success");
-                })
+            })
         })
     })
 }

@@ -22,12 +22,5 @@ function ajaxGET(url, callback) {
     }
     xhr.open("GET", url);
     xhr.send();
-    // return new Promise(function (myResolve, myReject) {
-    //     if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200){
-    //         myResolve(); 
-    //     } else {
-    //         myReject(); 
-    //     }
-    // });
 }
 
