@@ -35,22 +35,35 @@ function doAllEntry() {
     if (search_param.get("authStyle") === "login") {
         ajaxGET("/components/login.html", function (data) {
             login.innerHTML = data;
-            console.log("login inserted");
-        });
+            let userInfo = document.getElementById("userInfo");
+            if (userInfo) {
+                console.log("Login loaded");
+                let loginSubmitButton = document.getElementById("loginSubmitButton");
+                if (loginSubmitButton) {
+                    loginSubmitButton.addEventListener("click", function (e) {
+                        alert("Clicked");
+                        window.location.href = domain + "/map";
+                    });
+                } else {
+                    console.log("Login submit button not found");
+                }
+            } else {
+                console.log("Login element not found");
+            }
+        })
     } else if (search_param.get("authStyle") === "signup") {
         ajaxGET("/components/signup.html", function (data) {
             login.innerHTML = data;
             console.log("signup inserted");
+        }).then(data => {
+            let signup = document.getElementById("signupSubmitButton");
+            signup.addEventListener("click", function (e) {
+                window.location.href = domain + "/map";
+            });
         });
     } else {
         console.log("Failed");
     }
-    return new Promise(function (myResolve, myReject) {
-        // "Producing Code" (May take some time)
-
-        myResolve(); // when successful
-        myReject();  // when error
-    });
 }
 
 /** 
@@ -86,22 +99,24 @@ function insertFooter() {
  *  -login.html
  *  -signup.html
  */
-function goToMap(){
+function goToMap() {
     let url = new URL(window.location.href);
     let search_param = url.searchParams;
     if (search_param.get("authStyle") === "login") {
         let login = document.getElementById("loginSubmitButton");
-        login.addEventListener("click", function(e){
+        login.addEventListener("click", function (e) {
+            alert("alsdkfhijawoge");
             window.location.href = domain + "/map";
         });
     } else if (search_param.get("authStyle") === "signup") {
         let signup = document.getElementById("signupSubmitButton");
-        signup.addEventListener("click", function(e){
+        signup.addEventListener("click", function (e) {
             window.location.href = domain + "/map";
         });
     } else {
         console.log("Failed");
     }
+
 }
 
 

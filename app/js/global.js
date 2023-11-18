@@ -22,5 +22,8 @@ function ajaxGET(url, callback) {
     }
     xhr.open("GET", url);
     xhr.send();
+    return new Promise((resolve, reject)=>{
+        resolve("Success");
+    });
 }
 
