@@ -1,18 +1,6 @@
-body,
-html {
-  height: 100%;
-  width: 80%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f9;
-}
 
-.app-container {
+.popup-container {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -25,7 +13,7 @@ html {
   overflow: hidden;
 }
 
-.app-header {
+.popup-header {
   background-color: #a593e0;
   color: #FFF;
   padding: 15px;
@@ -34,13 +22,13 @@ html {
   font-weight: bold;
 }
 
-.restaurant-list {
+#restaurantListContainer {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.restaurant-item {
+.restaurant {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -57,7 +45,7 @@ html {
 }
 
 
-.request-button {
+#selectRestaurant {
   width: 100%;
   padding: 15px;
   font-size: 15px;
