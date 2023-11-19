@@ -19,7 +19,12 @@ function login() {
             }
             console.log(error);
         });
-    window.location.href = "/search.html";
+    let user = firebase.auth().currentUser;
+    if (user){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 function signup() {
@@ -62,5 +67,10 @@ function signup() {
             var errorCode = error.code;
             var errorMessage = error.message;
         });
-
+        let user = firebase.auth().currentUser;
+        if (user){
+            return true;
+        }else{
+            return false;
+        }
 }

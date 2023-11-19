@@ -1,35 +1,6 @@
 const apiKey = 'AIzaSyB8hXbq6-lLvbZ8-yUhPxL2jKgADB4Bf04';
 
-/**
- * PopList
- */
-function openList() {
-    let popupList = document.getElementById(components.restaurantList.placeholder);
-    let searchButton = document.getElementById(components.search.elements.searchButton);
-    searchButton.addEventListener("click", function (e) {
-        ajaxGET("/components/" + htmlAlias.restaurantList + ".html", function (data) {
-            //Grab element in popup.html to check if its dom is loaded
 
-            popupList.innerHTML = data;
-            let restaurantTemplate = document.getElementById(components.restaurantList.elements.restaurantTemplate);
-            if (restaurantTemplate) {
-                db.collection("restaurants").get().then((querySnapshot) => {
-                    querySnapshot.forEach((doc) => {
-                        //template elements don't have child nodes until you grab its ".content"
-                        let rest = restaurantTemplate.content.cloneNode(true);
-                        let restData = doc.data();
-                        rest.getElementById(`${components.restaurantList.elements.restaurantName}`).innerHTML = restData.name;
-                        rest.getElementById(`${components.restaurantList.elements.checkbox}`).attributes.dataId = doc.id;
-
-                        document.getElementById(components.restaurantList.elements.restaurantContainer).append(rest);
-
-                    });
-                });
-            }
-
-        });
-    })
-}
 
 
 async function loadGoogleMapsAPI() {
