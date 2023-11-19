@@ -3,7 +3,7 @@ let htmlAlias =
     //entry.html
     entry: "entry",
     index: "index",
-    popuplist: "popup"
+    restaurantList: "restaurantList"
 }
 
 // REQUIRES
@@ -49,8 +49,8 @@ app.get("/components/signup.html", function(req, res){
     res.send(doc);
 });
 
-app.get("/components/" + htmlAlias.popuplist + ".html", function(req, res){
-    let doc = fs.readFileSync("/public/components/" + htmlAlias.popuplist + ".html", "utf8");
+app.get("/components/" + htmlAlias.restaurantList + ".html", function(req, res){
+    let doc = fs.readFileSync("/public/components/" + htmlAlias.restaurantList + ".html", "utf8");
     res.send(doc);
 });
 

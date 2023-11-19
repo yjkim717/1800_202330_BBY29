@@ -1,0 +1,20 @@
+<div id="restaurantList" class="popup-container">
+    <div class="popup-header">Line up!</div>
+    <p>Restaurants near your location!</p>
+
+    <form id="restaurantListForm">
+        <div class="form-group d-flex flex-column" id="restaurantListContainer">
+        </div>
+    </form>
+
+    <template id="restaurantTemplate">
+        <div class="container d-flex flex-row justify-content-between">
+            <span id="restaurantName"></span>
+            <input class="form-check-input btn-primary selectRestaurant" type="checkbox" value="checked" id="restaurantCheckBox" dataId="">
+        </div>
+    </template>
+
+    <input type="number" id="numberOfPeople" value="1">
+    <button class="btn-request" onclick="lineup()">Request</button>
+</div>
+

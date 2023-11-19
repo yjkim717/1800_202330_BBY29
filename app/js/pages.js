@@ -9,8 +9,8 @@
 function doAllIndex() {
     insertNavbar();
     insertFooter();
-    let login = document.getElementById(elements.login.elements.loginButton);
-    let signup = document.getElementById(elements.signup.elements.signupButton);
+    let login = document.getElementById(components.login.elements.loginButton);
+    let signup = document.getElementById(components.signup.elements.signupButton);
     login.addEventListener("click", function (e) {
         window.location.href = domain + "/entry?authStyle=login";
     })
@@ -25,16 +25,16 @@ function doAllIndex() {
 function doAllEntry() {
     let url = new URL(window.location.href);
     let search_param = url.searchParams;
-    let login = document.getElementById(elements.login.placeholder);
+    let login = document.getElementById(components.login.placeholder);
     if (search_param.get("authStyle") === "login") {
         ajaxGET("/components/login.html", function (data) {
             login.innerHTML = data;
-            addButtonToMap(elements.login.elements.loginSubmitButton, elements.login.container);
+            addButtonToMap(components.login.elements.loginSubmitButton, components.login.container);
         })
     } else if (search_param.get("authStyle") === "signup") {
         ajaxGET("/components/signup.html", function (data) {
             login.innerHTML = data;
-            addButtonToMap(elements.signup.elements.signupSubmitButton, elements.signup.container);
+            addButtonToMap(components.signup.elements.signupSubmitButton, components.signup.container);
         });
     } else {
         console.log("Failed");
@@ -63,7 +63,7 @@ function addButtonToMap(button, authStyle) {
  * Inserts navbar 
  */
 function insertNavbar() {
-    let nav = document.getElementById(elements.navbar.placeholder);
+    let nav = document.getElementById(components.navbar.placeholder);
     ajaxGET("/components/navbar.html", function (data) {
         nav.innerHTML = data;
     });
@@ -73,7 +73,7 @@ function insertNavbar() {
  * Inserts footer 
  */
 function insertFooter() {
-    let footer = document.getElementById(elements.footer.placeholder);
+    let footer = document.getElementById(components.footer.placeholder);
     ajaxGET("/components/footer.html", function (data) {
         footer.innerHTML = data;
     });

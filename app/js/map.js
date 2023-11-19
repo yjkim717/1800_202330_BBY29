@@ -4,20 +4,28 @@ const apiKey = 'AIzaSyB8hXbq6-lLvbZ8-yUhPxL2jKgADB4Bf04';
  * PopList
  */
 function openList() {
-    let popupList = document.getElementById(elements.restaurantList.placeholder);
-    let searchButton = document.getElementById(elements.search.elements.searchButton);
+    let popupList = document.getElementById(components.restaurantList.placeholder);
+    let searchButton = document.getElementById(components.search.elements.searchButton);
     searchButton.addEventListener("click", function (e) {
-        ajaxGET("/components/" + htmlAlias.popuplist + ".html", function (data) {
+        ajaxGET("/components/" + htmlAlias.restaurantList + ".html", function (data) {
             //Grab element in popup.html to check if its dom is loaded
-            popupList = data;
-            let popupListContainer = document.getElementById("listContainer");
-            if (popupListContainer) {
-                console.log("success");
-            } else {
-                //fail
-            }
+            db.collection("restaurants").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    let restaurantTemplate = document.getElementById(components.restaurantList.elements.restaurantTemplate);
+                    let rest = restaurantTemplate.contents().clone();
+                    let data = doc.data();
+                    
+                    rest.getElementById(components.restaurantList.elements.restaurantName).append(data.name);
+                    rest.getElementById(components.restaurantList.elements.checkbox).attributes.dataId = doc.id;
+                    
+                    document.getElementById().append(rest);
+                });
+            });
         });
     })
+}
+function loadList(){
+    
 }
 
 

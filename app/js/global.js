@@ -6,7 +6,7 @@ let htmlAlias =
     //entry.html
     entry: "entry",
     index: "index",
-    popuplist: "popup"
+    restaurantList: "restaurantList"
 }
 
 let domain = "http://localhost:8000";
@@ -17,7 +17,7 @@ let domain = "http://localhost:8000";
     container = the parent element of the content
     elements = relevant children element of the content, or other elements related to content
  */
-let elements = 
+let components = 
 {
     footer: {
         placeholder: "putFooterHere",
@@ -65,8 +65,14 @@ let elements =
     }, 
     restaurantList: {
         placeholder: "putRestaurantHere",
-        container: undefined,
-        elements: undefined
+        container: "restaurantList",
+        elements: {
+            form: "restaurantListForm",
+            restaurantTemplate: "restaurantTemplate",
+            restaurantName: "restaurantName",
+            numberOfPeople: "numberOfPeople",
+            checkbox: "restaurantCheckBox"
+        }
     }, 
     
 
