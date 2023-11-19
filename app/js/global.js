@@ -71,7 +71,8 @@ let components =
             restaurantTemplate: "restaurantTemplate",
             restaurantName: "restaurantName",
             numberOfPeople: "numberOfPeople",
-            checkbox: "restaurantCheckBox"
+            checkbox: "restaurantCheckBox",
+            restaurantContainer: "restaurantListContainer"
         }
     }, 
     

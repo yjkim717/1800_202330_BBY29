@@ -9,23 +9,26 @@ function openList() {
     searchButton.addEventListener("click", function (e) {
         ajaxGET("/components/" + htmlAlias.restaurantList + ".html", function (data) {
             //Grab element in popup.html to check if its dom is loaded
-            db.collection("restaurants").get().then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    let restaurantTemplate = document.getElementById(components.restaurantList.elements.restaurantTemplate);
-                    let rest = restaurantTemplate.contents().clone();
-                    let data = doc.data();
-                    
-                    rest.getElementById(components.restaurantList.elements.restaurantName).append(data.name);
-                    rest.getElementById(components.restaurantList.elements.checkbox).attributes.dataId = doc.id;
-                    
-                    document.getElementById().append(rest);
+
+            popupList.innerHTML = data;
+            let restaurantTemplate = document.getElementById(components.restaurantList.elements.restaurantTemplate);
+            if (restaurantTemplate) {
+                db.collection("restaurants").get().then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        //template elements don't have child nodes until you grab its ".content"
+                        let rest = restaurantTemplate.content.cloneNode(true);
+                        let restData = doc.data();
+                        rest.getElementById(`${components.restaurantList.elements.restaurantName}`).innerHTML = restData.name;
+                        rest.getElementById(`${components.restaurantList.elements.checkbox}`).attributes.dataId = doc.id;
+
+                        document.getElementById(components.restaurantList.elements.restaurantContainer).append(rest);
+
+                    });
                 });
-            });
+            }
+
         });
     })
-}
-function loadList(){
-    
 }
 
 
@@ -88,7 +91,7 @@ function initMap() {
 
     const searchInput = document.getElementById('searchBar');
     const searchBox = new google.maps.places.SearchBox(searchInput);
-    
+
     //TODO: After Search Inserted
     map.addListener('bounds_changed', () => {
         searchBox.setBounds(map.getBounds());
