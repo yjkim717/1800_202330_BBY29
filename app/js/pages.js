@@ -41,7 +41,7 @@ let entryFunc = {
         } else if (search_param.get("authStyle") === "signup") {
             ajaxGET("/components/signup.html", function (data) {
                 login.innerHTML = data;
-                entryFunc.addButtonToMap(components.signup.elements.signupSubmitButton, components.signup.container);
+                entryFunc.completeButton(components.signup.elements.signupSubmitButton, components.signup.container);
             });
         } else {
             console.log("Failed");
