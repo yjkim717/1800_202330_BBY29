@@ -3,8 +3,8 @@
 
 let indexFunc = {
     doAllIndex: function () {
-        insertNavbar();
-        insertFooter();
+        indexFunc.insertNavbar();
+        indexFunc.insertFooter();
         let login = document.getElementById(components.login.elements.loginButton);
         let signup = document.getElementById(components.signup.elements.signupButton);
         login.addEventListener("click", function (e) {
@@ -13,6 +13,18 @@ let indexFunc = {
         signup.addEventListener("click", function (e) {
             window.location.href = domain + "/entry?authStyle=signup";
         })
+    },
+    insertNavbar: function() {
+        let nav = document.getElementById(components.navbar.placeholder);
+        ajaxGET("/components/navbar.html", function (data) {
+            nav.innerHTML = data;
+        });
+    },
+    insertFooter: function() {
+        let footer = document.getElementById(components.footer.placeholder);
+        ajaxGET("/components/footer.html", function (data) {
+            footer.innerHTML = data;
+        });
     }
 }
 
@@ -133,7 +145,7 @@ let mapFunc = {
             })
         })
     }
-}
+}   
 
 
 
@@ -147,25 +159,6 @@ function readSignup() {
 }
 
 
-/** 
- * Inserts navbar 
- */
-function insertNavbar() {
-    let nav = document.getElementById(components.navbar.placeholder);
-    ajaxGET("/components/navbar.html", function (data) {
-        nav.innerHTML = data;
-    });
-}
-
-/** 
- * Inserts footer 
- */
-function insertFooter() {
-    let footer = document.getElementById(components.footer.placeholder);
-    ajaxGET("/components/footer.html", function (data) {
-        footer.innerHTML = data;
-    });
-}
 
 
 
