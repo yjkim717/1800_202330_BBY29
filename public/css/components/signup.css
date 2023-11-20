@@ -1,4 +1,3 @@
-
 /* 
 Color Palette:
     purple: #EADDFF
@@ -7,10 +6,3 @@ Color Palette:
     dark purple: #D0BCFF
     dark grey: #625B71
 */
-.footer {
-    width: 100vw;
-    position: absolute;
-    bottom: 0vh;
-    padding: 2vw;
-    margin-bottom: 0vh !important;
-}

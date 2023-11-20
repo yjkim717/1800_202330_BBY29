@@ -1,5 +1,12 @@
 
-
+/* 
+Color Palette:
+    purple: #EADDFF
+    pink: #FFD8E4
+    light grey: #E6E0E9
+    dark purple: #D0BCFF
+    dark grey: #625B71
+*/
 
 body {
     /* background-color: #FFFFFF; Light shade for body background */
@@ -12,13 +19,7 @@ body {
     padding: 0;
 }
 
-/*Given Colors:
-*purple: #EADDFF
-*Pink: #FFD8E4
-*light GREY: #E6E0E9
-*Dark Purple: #D0BCFF
-*Dark Grey: #625B71
-*/
+
 
 #logoText {
     font-family: 'Pacifico';
