@@ -65,10 +65,10 @@ Appearance:
 }
 
 .btn-primary {
-    color: #D0BCFF;
+    color: #1D1B20;
     /* Light shade for text */
     font-size: 150%;
-    background-color: #AFBED1;
+    background-color: #ECE6F0;
     /* Dark shade for primary button background */
     border-color: #EADDFF;
     /* Darkest shade for border */

@@ -13,6 +13,24 @@ body {
 }
 
 
+#content {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#loginButton, #signupButton {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    /*height: 50px;*/
+    line-height: 50px;
+}
+
+
+
+
 
 
     
