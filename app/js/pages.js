@@ -81,7 +81,7 @@ let entryFunc = {
 let mapFunc = {
     doAllMap: function () {
         let popupList = document.getElementById(components.restaurantList.placeholder);
-        let searchButton = document.getElementById(components.search.elements.searchButton);
+        let searchButton = document.getElementById("searchButton");
         searchButton.addEventListener("click", function (e) {
             ajaxGET("/components/" + htmlAlias.restaurantList + ".html", function (data) {
                 //Grab element in popup.html to check if its dom is loaded

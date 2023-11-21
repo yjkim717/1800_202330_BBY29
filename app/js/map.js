@@ -1,8 +1,5 @@
 const apiKey = 'AIzaSyB8hXbq6-lLvbZ8-yUhPxL2jKgADB4Bf04';
 
-
-
-
 async function loadGoogleMapsAPI() {
     return new Promise((resolve, reject) => {
         const script = document.createElement('script');
