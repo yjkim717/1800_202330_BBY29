@@ -4,18 +4,11 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     position: relative;
+    overflow-y: scroll;
 }
 
-#content {
-    position:absolute;
-    top:50%;
-    transform: translateY(-50%);
-}
-
-
-#content {
-    margin-top: 20px;
-    margin-bottom: 20px;
+#content{
+    
 }
 
 #loginButton, #signupButton {

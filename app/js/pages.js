@@ -140,6 +140,7 @@ let doAll =
             })
         }
     },
+    
     helperFunc: {
         insertNavbar: function() {
             let nav = document.getElementById(components.navbar.placeholder);

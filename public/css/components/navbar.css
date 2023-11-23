@@ -7,6 +7,11 @@ Color Palette:
     dark grey: #625B71
     625B71
 */
+
+#putNavbarHere{
+    position: sticky;
+    top: 0vh;
+}
 a{
     text-decoration: none;
     color: #5A5468;
