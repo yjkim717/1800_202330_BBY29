@@ -99,6 +99,12 @@ let doAll =
                             mapFunc.lineup();
                         });
                     }
+                    let exitButton = document.getElementById("exitButton");
+                    if(exitButton){
+                        exitButton.addEventListener("click", function(e){
+                            popupList.innerHTML = "";
+                        });
+                    }
     
                 });
             })
