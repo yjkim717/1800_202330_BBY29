@@ -11,6 +11,9 @@ Color Palette:
     width: 100vw;
     position: absolute;
     bottom: 0vh;
-    padding: 2vw;
+    border: transparent;
+    background: linear-gradient(to bottom, transparent, #E6E0E9);
     margin-bottom: 0vh !important;
 }
+
+
