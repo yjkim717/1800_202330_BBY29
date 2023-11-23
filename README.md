@@ -9,18 +9,18 @@ Libraries:
     Frontend = bootstrap
 
 Folder Structure:
--app (dynamically rendered files that are "server owned")
-    -data(json, xml, etc.)
-    -pages
-    -js
-        -client.js (fetch)
-        -pages (render components)
--public (Static files for clients)
-    -components
-    -css
-    -img
-    -font
-    -js
+- **app** (dynamically rendered files that are "server owned")
+    - *data* (json, xml, etc.)
+    - *pages*
+    - *js*
+        - *client.js* (fetch)
+        - *pages* (render components)
+- **public** (Static files for clients)
+    - *components* 
+    - *css* 
+    - *img*
+    - *font*
+    - *js* 
 
 Additional Notes:
     -Use window.location.href when synchronously reloading an entire page (redirecting to different page)

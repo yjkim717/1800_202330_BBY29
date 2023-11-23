@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -49,13 +48,74 @@
 
     <nav id="putNavbarHere"></nav>
 
-    <div class="container-fluid d-flex flex-column justify-content-center align-items-center" id="content">
-        <div class="jumbotron" id="logo">
-            <h1 class="display-4" id="logoText">Line Up</h1>
+    <div class="container-fluid d-flex flex-column justify-content-center align-items-center" id="content0">
+        <div class="container mt-2">
+            <input type="radio" name="slider" class="d-none" id="s1" checked>
+            <input type="radio" name="slider" class="d-none" id="s2">
+            <input type="radio" name="slider" class="d-none" id="s3">
+            <input type="radio" name="slider" class="d-none" id="s4">
+            <input type="radio" name="slider" class="d-none" id="s5">
+
+            <div class="cards">
+                <label for="s1" id="slide1">
+                    <div class="card">
+                        <div class="image">
+                            <img src="/img/userGuide1.png" alt="">
+                        </div>
+                    </div>
+                </label>
+
+                <label for="s2" id="slide2">
+                    <div class="card">
+                        <div class="image">
+                            <img src="/img/userGuide2.png" alt="">
+                        </div>
+                    </div>
+                </label>
+
+                <label for="s3" id="slide3">
+                    <div class="card">
+                        <div class="image">
+                            <img src="/img/userGuide3.png" alt="">
+                        </div>
+                    </div>
+                </label>
+
+                <label for="s4" id="slide4">
+                    <div class="card">
+                        <div class="image">
+                            <img src="/img/userGuide4.png" alt="">
+                        </div>
+                    </div>
+                </label>
+
+                <label for="s5" id="slide5">
+                    <div class="card">
+                        <div class="image">
+                            <img src="/img/userGuide4.png" alt="">
+                        </div>
+                    </div>
+                </label>
+
+            </div>
         </div>
-        <button id="loginButton" type="button" class="btn btn-primary">Log in</button>
-        <button id="signupButton" type="button" class="btn btn-primary">Sign up</button>
+
+        <div class="jumbotron mt-4" id="logo">
+            <h1 class="display-4" id="logoText">Save Your Time</h1>
+                <p>
+                    We help fast casual restaurant owners and customers automate line up and sign up.
+                </p>
+            <div class="d-flex flex-column flex-md-row align-items-md-center">
+                <div class="ms-md-auto">
+                    <button id="loginButton" type="button" class="btn btn-primary">Log in</button>
+                    <button id="signupButton" type="button" class="btn btn-primary">Sign up</button>
+                </div>
+            </div>
+        </div>
+
+
     </div>
+
 
 
     <nav id="putFooterHere"></nav>
@@ -63,6 +123,7 @@
 
     <!-- Page scripts -->
     <script src="/js/pages.js"></script>
+    <script src="/js/carousel.js"></script>
     <script>
         indexFunc.doAllIndex();
     </script>
