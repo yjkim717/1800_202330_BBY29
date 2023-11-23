@@ -3,7 +3,7 @@ const apiKey = 'AIzaSyB8hXbq6-lLvbZ8-yUhPxL2jKgADB4Bf04';
 async function loadGoogleMapsAPI() {
     return new Promise((resolve, reject) => {
         const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap&libraries=places`;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap&libraries=places&language=en`;
         script.defer = true;
         script.async = true;
         script.onerror = reject;
@@ -15,6 +15,10 @@ function initMap() {
     const map = new google.maps.Map(document.getElementById('putMapHere'), {
         center: { lat: 49.2827, lng: -123.1207 }, //vancouver
         zoom: 13,
+        fullscreenControl: false,
+        streetViewControl: false,
+        mapTypeControl: false,
+        zoomControl: false,
         //try to change it to greyscale.. need to work more
         styles: [
             { elementType: 'geometry', stylers: [{ hue: '#f5f5f5' }] },
