@@ -18,6 +18,15 @@ let indexFunc = {
         let nav = document.getElementById(components.navbar.placeholder);
         ajaxGET("/components/navbar.html", function (data) {
             nav.innerHTML = data;
+
+            const toggleBtn = document.querySelector('.navbar_toogleBtn');
+            const menu = document.querySelector('.navbar_menu');
+            const links = document.querySelector('.navbar_links');
+
+            toggleBtn.addEventListener('click', () => {
+                menu.classList.toggle('active');
+                links.classList.toggle('active');
+            });
         });
     },
     insertFooter: function() {
