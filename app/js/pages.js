@@ -164,6 +164,7 @@ let doAll =
                     menu.classList.toggle('active');
                     links.classList.toggle('active');
                 });
+                // let navbarMenu = document.querySelector(".navbar_menu").childNodes;
             });
         },
         insertFooter: function() {
