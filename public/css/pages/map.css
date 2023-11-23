@@ -31,6 +31,7 @@
     height: 50px;
     border: none;
     cursor: pointer;
+    z-index:1983571092;
 }
 
 #mapContainer {
