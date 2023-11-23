@@ -14,7 +14,7 @@ let doAll =
             signup.addEventListener("click", function (e) {
                 window.location.href = domain + "/entry?authStyle=signup";
             })
-        },
+        }
         
     },
     
@@ -140,7 +140,7 @@ let doAll =
             })
         }
     },
-    
+
     helperFunc: {
         insertNavbar: function() {
             let nav = document.getElementById(components.navbar.placeholder);
