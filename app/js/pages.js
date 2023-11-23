@@ -138,6 +138,9 @@ let doAll =
                     });
                 })
             })
+        },
+        openConfirm: function(){
+
         }
     },
 

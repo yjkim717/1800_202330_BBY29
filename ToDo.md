@@ -16,6 +16,19 @@ FOR CSS FILES:
     - DO NOT edit dynamic changes yet like id::hover
 - We MIGHT make major changes as we write the informal report
 
+## List of Bugs
+- Navbar is underneath the card in index.html (change z-index)
+- Footer is not sticky on map.html
+
+
+
+
+
+
+
+
+
+
 ### Jenny
 - entry.css
 - index.css

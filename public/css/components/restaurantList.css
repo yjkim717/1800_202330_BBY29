@@ -62,7 +62,12 @@ Color Palette:
   cursor: pointer;
 }
 
-
+#exitButton{
+  position: relative;
+  top: 0;
+  right: 0;
+  width: 10%;
+}
 
 
 

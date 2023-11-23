@@ -9,7 +9,7 @@ Color Palette:
 */
 #putFooterHere, .footer {
     width: 100vw;
-    position: sticky;
+    position: absolute;
     bottom: 0vh;
     border: transparent;
     background: linear-gradient(to bottom, transparent, #E6E0E9);
