@@ -13,6 +13,7 @@ body {
 #content{
     max-height: 100%;
     overflow-y: scroll;
+    z-index: -5;
 }
 
 #loginButton, #signupButton {
@@ -61,7 +62,7 @@ button {
     width: 300px;
     left: 0;
     right: 0;
-    margin: auto;
+    margin: 0;
     cursor: pointer;
     transition: transform 0.55s ease;
 }
