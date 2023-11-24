@@ -18,6 +18,7 @@ app.use("/css", express.static("public/css"));
 app.use("/img", express.static("public/img"));
 app.use("/font", express.static("public/font"));
 app.use("/components", express.static("public/components"));
+app.use("/html", express.static("app/html"));
 
 app.get("/", function (req, res) {
     let doc = fs.readFileSync("./app/html/index.html", "utf8");

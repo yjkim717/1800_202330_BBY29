@@ -17,7 +17,7 @@ let doAll =
         }
         
     },
-    
+
     entryFunc : {
         doAllEntry: function () {
             doAll.helperFunc.insertNavbar();
@@ -69,7 +69,14 @@ let doAll =
             }
         }
     },
-    
+
+    teamFunc : {
+        doAllTeam: function() {
+            doAll.helperFunc.insertNavbar();
+            doAll.helperFunc.insertFooter();
+        }
+    },
+
     mapFunc : {
         doAllMap: function () {
             console.log("Test");
