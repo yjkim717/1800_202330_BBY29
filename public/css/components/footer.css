@@ -12,8 +12,7 @@ Color Palette:
     position: absolute;
     bottom: 0;
     border: transparent;
-    background: #1D1B20;
-    /*background: linear-gradient(to bottom, transparent, #E6E0E9);*/
+    background: linear-gradient(to bottom, transparent, #E6E0E9);
     margin-bottom: 0vh !important;
 }
 
@@ -27,23 +26,24 @@ Color Palette:
 .backButton {
     display: none;
     position: absolute;
-    left: 28px;
+    /*left: 0px;*/
     padding: 20px 20px;
 }
 
 .infoButton{
     display: none;
     position: absolute;
-    right: 28px;
+    right: 80px;
     padding: 20px 20px;
 }
 
 @media screen and (max-width: 768px) {
 
-    /*#putFooterHere, .footer {*/
-    /*    margin-bottom: 200px;  !* Adjust this value as needed *!*/
-    /*    padding: 8px 20px;*/
-    /*}*/
+    #putFooterHere, .footer {
+        margin-bottom: 200px;
+        padding: 8px 20px;
+        min-height: 50px;
+    }
 
 
     .infoButton,
@@ -52,9 +52,9 @@ Color Palette:
         /*margin-bottom: 100px;*/
     }
 
-    /*.copyRight{*/
-    /*    display: none;*/
-    /*}*/
+    .copyRight{
+        display: none;
+    }
 }
 
 
