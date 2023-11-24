@@ -27,19 +27,17 @@ global.css contains attributes that apply universally.
 
 
 
-
+### SOMEONE PLEASE
+- on restaurant list it is better to include the wait time
 
 
 ### Jenny
 - entry.css
-- index.css
 - map.css
 - map.html and map.js ("find restaurant" algorithm if we have time)
 
 ### Ash
-- footer.css
-- navbar.css
-- restaurantList.css
+
 
 ### Thao
 - login.css
