@@ -10,9 +10,10 @@ Color Palette:
 #putFooterHere, .footer {
     width: 100vw;
     position: absolute;
-    bottom: 0vh;
+    bottom: 0;
     border: transparent;
-    background: linear-gradient(to bottom, transparent, #E6E0E9);
+    background: #1D1B20;
+    /*background: linear-gradient(to bottom, transparent, #E6E0E9);*/
     margin-bottom: 0vh !important;
 }
 
@@ -38,20 +39,22 @@ Color Palette:
 }
 
 @media screen and (max-width: 768px) {
-    #putFooterHere, .footer{
-        margin-bottom: 100px;
-    }
+
+    /*#putFooterHere, .footer {*/
+    /*    margin-bottom: 200px;  !* Adjust this value as needed *!*/
+    /*    padding: 8px 20px;*/
+    /*}*/
 
 
     .infoButton,
     .backButton {
         display: block;
-        margin-bottom: 100px;
+        /*margin-bottom: 100px;*/
     }
 
-    .copyRight{
-        display: none;
-    }
+    /*.copyRight{*/
+    /*    display: none;*/
+    /*}*/
 }
 
 
