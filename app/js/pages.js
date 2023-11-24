@@ -20,6 +20,8 @@ let doAll =
     
     entryFunc : {
         doAllEntry: function () {
+            doAll.helperFunc.insertNavbar();
+            doAll.helperFunc.insertFooter();
             let url = new URL(window.location.href);
             let search_param = url.searchParams;
             let login = document.getElementById("putSigninHere");

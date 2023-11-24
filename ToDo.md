@@ -11,8 +11,11 @@ global.css contains attributes that apply universally.
 
 ## TODO
 
-**FOR CSS FILES:**
+**CSS:**
 - Organize css attributes into appropriate media queries
+
+**HTML:**
+- Implement the "Team" button on navbar
 
 ## List of Bugs
 - Navbar is underneath the card in index.html (change z-index)

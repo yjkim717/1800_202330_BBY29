@@ -24,11 +24,13 @@ a{
     align-items: center;
     background: linear-gradient(to bottom, rgba(236, 230, 240, 1), rgba(236, 230, 240, 0.2));
     padding: 8px 20px;
+    z-index: 6;
 }
 
 .navbar_logo {
     font-size: 36px;
     font-family: 'Pacifico';
+    z-index: 7;
 }
 
 .navbar_menu {
