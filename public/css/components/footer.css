@@ -16,11 +16,42 @@ Color Palette:
     margin-bottom: 0vh !important;
 }
 
-@media screen and (max-width: 768px){
-
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
 }
 
-@media screen and (min-width: 769px){
-
+.backButton {
+    display: none;
+    position: absolute;
+    left: 28px;
+    padding: 20px 20px;
 }
+
+.infoButton{
+    display: none;
+    position: absolute;
+    right: 28px;
+    padding: 20px 20px;
+}
+
+@media screen and (max-width: 768px) {
+    #putFooterHere, .footer{
+        margin-bottom: 100px;
+    }
+
+
+    .infoButton,
+    .backButton {
+        display: block;
+        margin-bottom: 100px;
+    }
+
+    .copyRight{
+        display: none;
+    }
+}
+
 
