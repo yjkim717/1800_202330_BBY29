@@ -9,12 +9,10 @@ global.css contains attributes that apply universally.
 2. USE ID for specific attributes
 3. Follow the color palette
 
-## Assigned work
+## TODO
 
-FOR CSS FILES:
-- Edit color, positioning, size, and texture.
-    - DO NOT edit dynamic changes yet like id::hover
-- We MIGHT make major changes as we write the informal report
+**FOR CSS FILES:**
+- Organize css attributes into appropriate media queries
 
 ## List of Bugs
 - Navbar is underneath the card in index.html (change z-index)
