@@ -74,17 +74,53 @@ Appearance:
     border-color: #7FBEEB;
     /* Dark shade for button border */
 }
-
-.btn-primary {
-    color: #1D1B20;
-    /* Light shade for text */
-    font-size: 150%;
-    background-color: #ECE6F0;
-    /* Dark shade for primary button background */
-    border-color: #EADDFF;
-    /* Darkest shade for border */
-    border-width: thick;
+.btn-primary{
+    background:#625B71;
+    color:#fff;
+    border:none;
+    position:relative;
+    height:50px;
+    font-size:1.6em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
 }
+.btn-primary:hover{
+    background:#E6E0E9;
+    color:#625B71;
+}
+.btn-primary:before,.btn-primary:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #625B71;
+    transition:400ms ease all;
+}
+.btn-primary:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+}
+.btn-primary:hover:before,.btn-primary:hover:after{
+    width:100%;
+    transition:800ms ease all;
+}
+
+/*.btn-primary {*/
+/*    color: #1D1B20;*/
+/*    !* Light shade for text *!*/
+/*    font-size: 150%;*/
+/*    background-color: #ECE6F0;*/
+/*    !* Dark shade for primary button background *!*/
+/*    border-color: #EADDFF;*/
+/*    !* Darkest shade for border *!*/
+/*    border-width: thick;*/
+/*}*/
 
 #description {
     font-family: Roboto;
