@@ -6,6 +6,13 @@ Color Palette:
     dark purple: #D0BCFF
     dark grey: #625B71
 */
+@media screen and (max-width: 768px){
+
+}
+
+@media screen and (min-width: 769px){
+
+}
 
 .popup-container {
   position: absolute;

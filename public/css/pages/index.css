@@ -1,3 +1,12 @@
+
+@media screen and (max-width: 768px){
+
+}
+
+@media screen and (min-width: 769px){
+
+}
+
 body {
     background: url('/img/background.gif');
     background-size: cover;

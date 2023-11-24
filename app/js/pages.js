@@ -6,8 +6,8 @@ let doAll =
         doAllIndex: function () {
             doAll.helperFunc.insertNavbar();
             doAll.helperFunc.insertFooter();
-            let login = document.getElementById(components.login.elements.loginButton);
-            let signup = document.getElementById(components.signup.elements.signupButton);
+            let login = document.getElementById("loginButton");
+            let signup = document.getElementById("signupButton");
             login.addEventListener("click", function (e) {
                 window.location.href = domain + "/entry?authStyle=login";
             })
@@ -22,16 +22,16 @@ let doAll =
         doAllEntry: function () {
             let url = new URL(window.location.href);
             let search_param = url.searchParams;
-            let login = document.getElementById(components.login.placeholder);
+            let login = document.getElementById("putSigninHere");
             if (search_param.get("authStyle") === "login") {
                 ajaxGET("/components/login.html", function (data) {
                     login.innerHTML = data;
-                    doAll.entryFunc.completeButton(components.login.elements.loginSubmitButton, components.login.container);
+                    doAll.entryFunc.completeButton("loginSubmitButton", "login");
                 })
             } else if (search_param.get("authStyle") === "signup") {
                 ajaxGET("/components/signup.html", function (data) {
                     login.innerHTML = data;
-                    entryFunc.completeButton(components.signup.elements.signupSubmitButton, components.signup.container);
+                    entryFunc.completeButton("signupSubmitButton", "signup");
                 });
             } else {
                 console.log("Failed");
@@ -73,7 +73,7 @@ let doAll =
             console.log("Test");
             doAll.helperFunc.insertNavbar();
             doAll.helperFunc.insertFooter();
-            let popupList = document.getElementById(components.restaurantList.placeholder);
+            let popupList = document.getElementById("putRestaurantHere");
             let searchButton = document.getElementById("searchButton");
             searchButton.addEventListener("click", function (e) {
                 console.log("Test");
@@ -81,17 +81,17 @@ let doAll =
                     //Grab element in popup.html to check if its dom is loaded
                     
                     popupList.innerHTML = data;
-                    let restaurantTemplate = document.getElementById(components.restaurantList.elements.restaurantTemplate);
+                    let restaurantTemplate = document.getElementById("restaurantTemplate");
                     if (restaurantTemplate) {
                         db.collection("restaurants").get().then((querySnapshot) => {
                             querySnapshot.forEach((doc) => {
                                 //template elements don't have child nodes until you grab its ".content"
                                 let rest = restaurantTemplate.content.cloneNode(true);
                                 let restData = doc.data();
-                                rest.getElementById(`${components.restaurantList.elements.restaurantName}`).innerHTML = restData.name;
-                                rest.getElementById(`${components.restaurantList.elements.checkbox}`).attributes.dataId = doc.id;
+                                rest.getElementById(`${"restaurantName"}`).innerHTML = restData.name;
+                                rest.getElementById(`${"restaurantCheckBox"}`).attributes.dataId = doc.id;
     
-                                document.getElementById(components.restaurantList.elements.restaurantContainer).append(rest);
+                                document.getElementById("restaurantListContainer").append(rest);
     
                             });
                         });
@@ -152,7 +152,7 @@ let doAll =
 
     helperFunc: {
         insertNavbar: function() {
-            let nav = document.getElementById(components.navbar.placeholder);
+            let nav = document.getElementById("putNavbarHere");
             ajaxGET("/components/navbar.html", function (data) {
                 nav.innerHTML = data;
     
@@ -168,7 +168,7 @@ let doAll =
             });
         },
         insertFooter: function() {
-            let footer = document.getElementById(components.footer.placeholder);
+            let footer = document.getElementById("putFooterHere");
             ajaxGET("/components/footer.html", function (data) {
                 footer.innerHTML = data;
             });

@@ -2,6 +2,15 @@
 body{
     position: relative;
 }
+
+@media screen and (max-width: 768px){
+
+}
+
+@media screen and (min-width: 769px){
+
+}
+
 #searchContainer {
     position: relative;
     background-color: rgba(236, 230, 240, 0.5);

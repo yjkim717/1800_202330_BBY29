@@ -18,8 +18,18 @@ body {
     margin: 0;
     padding: 0;
     position:relative;
+    /* Must be at least 320px because it is the size of the smallest screen size */
+    min-height: 320px !important;
+    min-width: 320px !important;
 }
 
+@media screen and (max-width: 768px){
+
+}
+
+@media screen and (min-width: 769px){
+
+}
 
 
 #logoText {
