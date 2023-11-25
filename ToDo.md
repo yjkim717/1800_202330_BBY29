@@ -29,6 +29,7 @@ global.css contains attributes that apply universally.
 
 ### SOMEONE PLEASE
 - on restaurant list it is better to include the wait time
+- after login success on map page i hope it says "Welcome Back" as a 2s popup
 
 
 ### Jenny
@@ -40,5 +41,4 @@ global.css contains attributes that apply universally.
 
 
 ### Thao
-- login.css
 - signup.css
