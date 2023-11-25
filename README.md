@@ -25,7 +25,9 @@
 </div>
 
 ## About The Project
-[![Product Name Screen Shot](/public/img/readme.png)
+<div align="center">
+  <img src="/public/img/readme.png" alt="Product Name Screen Shot" height="500" align="center">
+</div>
 
 ### Built With
 
