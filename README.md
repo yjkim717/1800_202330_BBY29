@@ -25,7 +25,8 @@
 </div>
 
 ## About The Project
-[![Product Name Screen Shot][/public/img/readme.png]
+[![Product Name Screen Shot](/public/img/readme.png)
+
 ### Built With
 
 * [![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow.svg?style=for-the-badge&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
