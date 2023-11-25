@@ -9,7 +9,7 @@ Color Palette:
 */
 
 body {
-    /* background-color: #FFFFFF; Light shade for body background */
+    background: url('/img/background.gif');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -21,7 +21,9 @@ body {
     /* Must be at least 320px because it is the size of the smallest screen size */
     min-height: 320px !important;
     min-width: 320px !important;
+    overflow-y: scroll;
 }
+
 
 @media screen and (max-width: 768px){
 

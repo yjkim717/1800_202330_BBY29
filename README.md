@@ -25,4 +25,5 @@ Folder Structure:
 Additional Notes:
     -Use window.location.href when synchronously reloading an entire page (redirecting to different page)
     -Use http request when asynchronously rendering a component
+    -Use fontawesome for icons in team.html
     
