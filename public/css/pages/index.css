@@ -1,6 +1,10 @@
 
 #content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     max-height: 100%;
+    height: 90vh;
     overflow-y: scroll;
     z-index: -5;
 }
@@ -20,7 +24,6 @@ button {
 
 
 .container {
-
     width: 100%;
     height: 100%;
     max-width: 600px;
