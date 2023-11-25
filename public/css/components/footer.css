@@ -9,7 +9,7 @@ Color Palette:
 */
 #putFooterHere, .footer {
     width: 100vw;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     border: transparent;
     background: linear-gradient(to bottom, transparent, #E6E0E9);
@@ -39,7 +39,11 @@ Color Palette:
 
 @media screen and (max-width: 768px) {
 
+
     #putFooterHere, .footer {
+        width: 100vw;
+        position: fixed;
+        bottom: 0;
         margin-bottom: 200px;
         padding: 8px 20px;
         min-height: 50px;
