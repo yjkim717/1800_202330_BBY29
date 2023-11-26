@@ -2,6 +2,23 @@
 body{
     position: relative;
 }
+#searchBar {
+    border: 4px solid rgba(103, 80, 164, 0.4);
+    border-radius: 10px;
+    font-size: 16px;
+    color: #625B71;
+    backdrop-filter: blur(10px);
+}
+
+#searchButton:hover {
+    background-color: rgba(255, 216, 228, 0.6);
+    border-radius: 40px;
+}
+
+#searchButton {
+    backdrop-filter: blur(30px);
+    padding: 20px;
+}
 
 @media screen and (max-width: 768px){
     #searchContainer {
@@ -22,9 +39,6 @@ body{
         flex: 1;
         padding: 10px;
         margin-right: 10px;
-        border: 2px solid #5A5468;
-        border-radius: 5px;
-        background-color: #ECE6F0;
         text-align: center;
     }
     
@@ -37,6 +51,7 @@ body{
         cursor: pointer;
         z-index:1983571092;
     }
+
     
     #mapContainer {
         position: absolute;
@@ -81,9 +96,6 @@ body{
         flex: 1;
         padding: 10px;
         margin-right: 10px;
-        border: 2px solid #5A5468;
-        border-radius: 5px;
-        background-color: #ECE6F0;
         text-align: center;
     }
     
