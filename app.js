@@ -35,6 +35,11 @@ app.get("/map", function (req, res) {
     res.send(doc);
 });
 
+app.get("/status", function (req, res) {
+    let doc = fs.readFileSync("./app/html/status.html", "utf8");
+    res.send(doc);
+});
+
 app.get("/components/navbar.html", function(req, res){
     let doc = fs.readFileSync("/public/components/navbar.html", "utf8");
     res.send(doc);
