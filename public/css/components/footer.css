@@ -1,64 +1,28 @@
-
-/* 
-Color Palette:
-    purple: #EADDFF
-    pink: #FFD8E4
-    light grey: #E6E0E9
-    dark purple: #D0BCFF
-    dark grey: #625B71
-*/
-#putFooterHere, .footer {
-    width: 100vw;
-    position: fixed;
-    bottom: 0;
-    border: transparent;
-    background: linear-gradient(to bottom, transparent, #E6E0E9);
-    margin-bottom: 0vh !important;
-}
-
-.footer {
+.footer{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    bottom: 0;
+    margin-bottom: 0 !important;
     align-items: center;
-    padding: 8px 20px;
+    background: rgba(98,91,113,0.8);
+    border-top-left-radius: 100px;
+    padding: 20px 10px;
 }
-
-.backButton {
-    display: none;
-    position: absolute;
-    /*left: 0px;*/
-    padding: 20px 20px;
+.column {
+    margin-top: auto;
+    padding-bottom: 10px;
 }
-
-.infoButton{
-    display: none;
-    position: absolute;
-    right: 80px;
-    padding: 20px 20px;
+.column a {
+    color: #FEF7FF;
+    padding: 20px;
+}
+.column a:hover {
+    color: #FFD8E4;
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 768px) {
 
 
-    #putFooterHere, .footer {
-        width: 100vw;
-        position: fixed;
-        bottom: 0;
-        margin-bottom: 200px;
-        padding: 8px 20px;
-        min-height: 50px;
-    }
-
-
-    .infoButton,
-    .backButton {
-        display: block;
-        /*margin-bottom: 100px;*/
-    }
-
-    .copyRight{
-        display: none;
-    }
 }
-
-

@@ -19,7 +19,28 @@ button {
     line-height: 50px;
 }
 
-/* Jenny editing front page*/
+
+
+#logo {
+    width: 90%;
+    height: auto;
+    background: transparent;
+    border: 4px solid rgba(103, 80, 164, 0.1);
+    backdrop-filter: blur(10px);
+    color: #625B71;
+    border-radius: 12px;
+    padding: 30px 40px;
+}
+
+#logo h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+#logo p {
+    font-size: 18px;
+    text-align: left;
+}
 
 
 
@@ -33,10 +54,10 @@ button {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    transform: translateX(15%);
 }
 
 .cards {
-
     position: relative;
     height: 500px;
     width: 430px;
@@ -48,7 +69,6 @@ button {
 
 
 .cards label {
-
     position: absolute;
     width: 300px;
     left: 0;
@@ -59,7 +79,6 @@ button {
 }
 
 .cards .card{
-
     position: relative;
     height: 100%;
     border-radius: 20px;
@@ -138,6 +157,14 @@ button {
 }
 
 @media screen and (max-width: 768px){
+    .container {
+        padding-top: 370px;
+    }
+
+    #logo {
+        display: block;
+        margin-top: 300px;
+    }
 
 }
 
