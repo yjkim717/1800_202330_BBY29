@@ -116,3 +116,67 @@
     color: #fff;
     font-size: 24px;
 }
+
+
+#contact-form {
+    width: 90%;
+    height: auto;
+    background: transparent;
+    border: 4px solid rgba(103, 80, 164, 0.2);
+    backdrop-filter: blur(10px);
+    color: #625B71;
+    border-radius: 12px;
+    padding: 30px 40px;
+}
+
+#contact-form h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 90%;
+    height: 45px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 3px solid rgba(103, 80, 164, 0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #625B71;
+    padding: 20px 45px 20px 20px;
+    margin-bottom: 15px;
+}
+
+#contact-form textarea {
+    height: 150px;
+    resize: none;
+}
+
+#contact-form ::placeholder {
+    color: #625B71;
+}
+
+#contact-form .btn {
+    width: 30%;
+    height: 45px;
+    background: #FEF7FF;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    font-size: 16px;
+    color: #625B71;
+    font-weight: 600;
+}
+
+#contact-form p a {
+    color: #6750A4;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#contact-form p a:hover {
+    text-decoration: underline;
+}
