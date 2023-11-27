@@ -31,14 +31,18 @@ global.css contains attributes that apply universally.
 - on restaurant list it is better to include the wait time
 - after login success on map page i hope it says "Welcome Back" as a 2s popup
 
+### wednesday 12 pm
+
+### John 
+- confirm pop up* 
+- buttons*
+- status page
 
 ### Jenny
-- entry.css
-- map.css
-- map.html and map.js ("find restaurant" algorithm if we have time)
+- readme
 
 ### Ash
-
+- media query index, entry 
 
 ### Thao
-- signup.css
+- media query footer, team page
