@@ -16,7 +16,6 @@
 .column a {
     color: #FEF7FF;
     padding: 20px;
-    text-align: center;
 }
 .column a:hover {
     color: #FFD8E4;
@@ -24,9 +23,6 @@
 }
 
 @media screen and (max-width: 768px) {
-    .column a {
-        display: block;
-        margin-bottom: 10px;
-        text-align: center;
-    }
+
+
 }

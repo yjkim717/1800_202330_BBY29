@@ -2,11 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh;
-}
-
-#content{
-    height:69vh;
+    height: 100vh;
 }
 
 #login-form {
