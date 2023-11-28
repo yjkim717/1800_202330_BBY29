@@ -17,12 +17,15 @@
     color: #FEF7FF;
     padding: 20px;
 }
+
 .column a:hover {
     color: #FFD8E4;
     text-decoration: underline;
 }
 
 @media screen and (max-width: 768px) {
-
-
+   .column1 a{
+    display: block;
+    text-align: center;
+   }
 }
