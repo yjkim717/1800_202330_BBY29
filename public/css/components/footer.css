@@ -24,7 +24,7 @@
 }
 
 @media screen and (max-width: 768px) {
-   .column a{
+   .column1 a{
     display: block;
     margin-bottom:10px;
     text-align: center;
