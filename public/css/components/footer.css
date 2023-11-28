@@ -22,7 +22,25 @@
     text-decoration: underline;
 }
 
+.column1 {
+    margin-top: auto;
+    padding-bottom: 10px;
+}
+.column1 a {
+    color: #FEF7FF;
+    padding: 20px;
+}
+.column1 a:hover {
+    color: #FFD8E4;
+    text-decoration: underline;
+}
+
 @media screen and (max-width: 768px) {
 
+    .column1 a {
+        display: block;
+        text-align: center;
+        padding-top: 3px;
+    }
 
 }
