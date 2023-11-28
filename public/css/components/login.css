@@ -2,7 +2,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 50vh;
+}
+
+#content{
+    height:69vh;
 }
 
 #login-form {
@@ -30,7 +34,7 @@
 
 #login-form input {
     width: 100%;
-    height: 45px;
+    height: 40px;
     background: transparent;
     border: none;
     outline: none;

@@ -16,6 +16,7 @@
 .column a {
     color: #FEF7FF;
     padding: 20px;
+    text-align: center;
 }
 .column a:hover {
     color: #FFD8E4;
@@ -23,6 +24,13 @@
 }
 
 @media screen and (max-width: 768px) {
-
-
+    .footer{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: 
+        "column1"
+        "colums2"
+        "lineup";
+    }
+    
 }
