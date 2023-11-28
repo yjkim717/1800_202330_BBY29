@@ -1,10 +1,43 @@
-#alert{
+#alert {
     position: absolute;
     display: block;
     z-index: 10000;
-    /* Just so I can see it */
-    background-color: black;
-    top:50%;
-    left:50%;
+    background: transparent;
+    border: 8px solid rgba(255, 216, 228, 0.9);
+    backdrop-filter: blur(10px);
+    color: #625B71;
+    border-radius: 12px;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
+    animation: shake 1s ease-in-out;
 }
+
+#alertBox {
+    padding: 10px;
+}
+
+@keyframes shake {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    25% { transform: translate(-50%, -50%) rotate(-5deg); }
+    50% { transform: translate(-50%, -50%) rotate(5deg); }
+    75% { transform: translate(-50%, -50%) rotate(-5deg); }
+    100% { transform: translate(-50%, -50%) rotate(5deg); }
+}
+
+#alertHeader {
+    font-family: Pacifico;
+    font-size: 30px;
+    text-align: center;
+}
+
+#alertBody {
+    padding: 20px;
+}
+
+#decline.btn-primary,
+#accept.btn-primary {
+    transform: scale(0.5);
+}
+
+
