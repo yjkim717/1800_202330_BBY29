@@ -16,8 +16,8 @@
 .column a {
     color: #FEF7FF;
     padding: 20px;
+    text-align: center;
 }
-
 .column a:hover {
     color: #FFD8E4;
     text-decoration: underline;
