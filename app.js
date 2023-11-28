@@ -60,6 +60,11 @@ app.get("/components/" + htmlAlias.restaurantList + ".html", function(req, res){
     res.send(doc);
 });
 
+app.get("/components/alert.html", function(req, res){
+    let doc = fs.readFileSync("/public/components/alert.html", "utf8");
+    res.send(doc);
+})
+
 let port = 8000;
 app.listen(port, function () {
     console.log("Example app listening on port " + port + "!");

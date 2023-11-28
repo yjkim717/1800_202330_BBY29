@@ -106,12 +106,7 @@ let doAll =
                         });
                         document.getElementById("requestButton").addEventListener("click", function (e) {
                             doAll.mapFunc.lineup();
-                            let promise = new Promise(function(resolve, reject){
-                                setTimeout(()=>resolve("done"), 5000);
-                            });
-                            promise.then(function(result){
-                                
-                            });
+                            doAll.mapFunc.openConfirm();
                         });
                     }
                     let exitButton = document.getElementById("exitButton");
@@ -161,8 +156,27 @@ let doAll =
             })
         },
         openConfirm: function(){
+            let promise = new Promise(function(resolve, reject){
+                setTimeout(()=>resolve("done"), 3000);
+            });
+            promise.then(function(result){
+                ajaxGET("/components/alert.html", function(data){
+                    if (!document.getElementById("alert")){
+                        document.body.insertAdjacentHTML("beforeend", data);
+                    }
+                });
+                let alert = document.getElementById("alert");
+                if (alert){
+                    alert.querySelector("#decline").addEventListener("click", function(e){
+                        // To Do
+                    });
+                    alert.querySelector("#accept").addEventListener("click", function(e){
+                        // To Do
+                    });
+                }
+            });
+        },
 
-        }
     },
 
     helperFunc: {
