@@ -81,39 +81,53 @@ Content of the project folder:
 
 ```
  Top level of project folder: 
-├── .gitignore               # Git ignore file
-├── index.html               # landing HTML file, this is what users see when you come to url
-├── login.html               # login HTML file, the log-in page
-├── main.html                # main HTML file, the landing page after log-in or user set-up
-└── README.md                # woah, you're reading this now!
+ ├── .gitignore               # Git ignore file
+ ├── package-lock.json        # dependencies and some metadata
+ ├── package.json             # dependencies project requires the "express" package with a version equal to or higher than 4.18.2
+ ├── app.js                   # establishes an Express.js server with path-specific route handlers, serves static files for virtual paths, and dynamically routes based on the htmlAlias object.
+ └── README.md                # documentation and information about LineUp.
 
 It has the following subfolders and files:
-├── .git                     # Folder for git repo
-├── images                   # Folder for images
-        /icons
-            /activity.svg
-        /login.jpg
+├── .idea                     # Folder for ?????????
+├── app                             # Folder for dynamically rendered files that are "server owned"
+        /html
+            /entry.html
+            /index.html
+            /map.html
+            /status.html
+            /team.html
+            /template.html
+        /js
+            /authentication.js
+            /client.js
+            /firebaseAPI.js
+            /global.js
+            /map.js
+            /pages.js
         
-├── scripts                         # Folder for scripts
-  
-        /firebase_api.js            # firebase API stuff, shared across pages
-        /login_firebase.js          # JS for login.html
-
-├── styles                          # Folder for styles
-        /index.css                  # style for index.html
-        /login.css                  # style for login.html
-        /main.css                   # style for main.htm
-
-Firebase hosting files: 
-├── .firebase
-	/hosting..cache
-├── .firebaserc
-├── 404.html
-├── firebase.json
-├── firestore.indexes.json
-├── firestore.rules
-├── storage.rules
-
+├── public                          # Folder for static files for clients
+        /components
+            /footer.html
+            /login.html
+            /navbar.html
+            /restaurantList.html
+            /signup.html
+        /css
+            /components                 # 
+                /footer.css
+                /login.css
+                /navbar.css
+                /restaurantList.css
+                /signup.css
+            /pages.css                  # 
+                /entry.css
+                /index.css
+                /map.css
+                /team.css
+            /global.css
+        /font
+            /Pacifico-Regular.ttf
+        /img
 
 ```
 
