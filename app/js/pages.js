@@ -1,8 +1,8 @@
 
 
-let doAll = 
+let doAll =
 {
-    indexFunc : {
+    indexFunc: {
         doAllIndex: function () {
             doAll.helperFunc.insertNavbar();
             doAll.helperFunc.insertFooter();
@@ -15,10 +15,10 @@ let doAll =
                 window.location.href = domain + "/entry?authStyle=signup";
             })
         }
-        
+
     },
 
-    entryFunc : {
+    entryFunc: {
         doAllEntry: function () {
             doAll.helperFunc.insertNavbar();
             doAll.helperFunc.insertFooter();
@@ -45,7 +45,7 @@ let doAll =
                 let signupSubmitButton = document.getElementById(button);
                 if (signupSubmitButton) {
                     signupSubmitButton.addEventListener("click", function (e) {
-    
+
                         if (button === "loginSubmitButton") {
                             if (login()) {
                                 window.location.href = domain + "/map";
@@ -59,7 +59,7 @@ let doAll =
                                 alert("Signup failed");
                             }
                         }
-    
+
                     });
                 } else {
                     console.log("signup submit button not found");
@@ -70,16 +70,16 @@ let doAll =
         }
     },
 
-    teamFunc : {
-        doAllTeam: function() {
+    teamFunc: {
+        doAllTeam: function () {
             doAll.helperFunc.insertNavbar();
             doAll.helperFunc.insertFooter();
         }
     },
 
-    mapFunc : {
+    mapFunc: {
         doAllMap: function () {
-            console.log("Test");
+
             doAll.helperFunc.insertNavbar();
             doAll.helperFunc.insertFooter();
             let popupList = document.getElementById("putRestaurantHere");
@@ -88,7 +88,7 @@ let doAll =
                 console.log("Test");
                 ajaxGET("/components/" + htmlAlias.restaurantList + ".html", function (data) {
                     //Grab element in popup.html to check if its dom is loaded
-                    
+
                     popupList.innerHTML = data;
                     let restaurantTemplate = document.getElementById("restaurantTemplate");
                     if (restaurantTemplate) {
@@ -99,9 +99,9 @@ let doAll =
                                 let restData = doc.data();
                                 rest.getElementById(`${"restaurantName"}`).innerHTML = restData.name;
                                 rest.getElementById(`${"restaurantCheckBox"}`).attributes.dataId = doc.id;
-    
+
                                 document.getElementById("restaurantListContainer").append(rest);
-    
+
                             });
                         });
                         document.getElementById("requestButton").addEventListener("click", function (e) {
@@ -110,25 +110,25 @@ let doAll =
                         });
                     }
                     let exitButton = document.getElementById("exitButton");
-                    if(exitButton){
-                        exitButton.addEventListener("click", function(e){
+                    if (exitButton) {
+                        exitButton.addEventListener("click", function (e) {
                             popupList.innerHTML = "";
                         });
                     }
-    
+
                 });
             })
         },
         lineup: function () {
             let user = firebase.auth().currentUser;
-    
+
             if (!user) {
                 console.log("NOT USER SIGNEDD IN");
                 return;
             }
             let posterID = user.uid;
             let number = document.getElementById("numberOfPeople").value;
-    
+
             //TODO: Grab array of restaurants selected from signup popup
             // TODO: Loop the bottom code for each restaurant
             $("input:checked.selectRestaurant").each((index, element) => {
@@ -140,8 +140,11 @@ let doAll =
                     number,
                     status: true
                 })
-    
             });
+            if ($("input:checked.selectRestaurant").length > 0) {
+                db.collection("users").doc(user.uid).update({ waiting: true });
+            }
+
             db.collection("signup").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     let use = db.collection("users").doc(user.uid);
@@ -155,40 +158,59 @@ let doAll =
                 })
             })
         },
-        openConfirm: function(){
-            let promise = new Promise(function(resolve, reject){
-                setTimeout(()=>resolve("done"), 3000);
+        openConfirm: function () {
+            let user = firebase.auth().currentUser;
+            let promise = new Promise(function (resolve, reject) {
+                setTimeout(() => resolve("done"), 1000);
             });
-            promise.then(function(result){
-                ajaxGET("/components/alert.html", function(data){
-                    if (!document.getElementById("alert")){
+            promise.then(function (result) {
+                ajaxGET("/components/alert.html", function (data) {
+                    if (!document.getElementById("alert")) {
                         document.body.insertAdjacentHTML("beforeend", data);
                     }
+                    let alert = document.getElementById("alert");
+                    if (alert) {
+                        alert.querySelector("#decline").addEventListener("click", function (e) {
+                            // Nothing here because we need id of restaurant that is being declined
+                        });
+                        alert.querySelector("#accept").addEventListener("click", function (e) {
+                            db.collection("users").doc(user.uid).update({
+                                waiting: false,
+                                myrequest: []
+                            });
+                            let requestsDelete = [];
+                            db.collection("signup").get().then((querySnapshot) => {
+                                querySnapshot.forEach((doc) => {
+                                    let posterID = doc.data().posterID;
+                                    if (user.uid == posterID) {
+                                        console.log(doc.id);
+                                        requestsDelete.push(doc.id);
+                                    }
+                                });
+                                requestsDelete.forEach(function(data){
+                                    db.collection("signup").doc(data).delete().then(()=>console.log("Delete success"));
+                                })
+                            });
+                            //Send confirmation request to restaurant
+                        });
+                    }
                 });
-                let alert = document.getElementById("alert");
-                if (alert){
-                    alert.querySelector("#decline").addEventListener("click", function(e){
-                        // To Do
-                    });
-                    alert.querySelector("#accept").addEventListener("click", function(e){
-                        // To Do
-                    });
-                }
+
             });
         },
 
     },
 
     helperFunc: {
-        insertNavbar: function() {
+        insertNavbar: function () {
             let nav = document.getElementById("putNavbarHere");
             ajaxGET("/components/navbar.html", function (data) {
                 nav.innerHTML = data;
-    
+
                 const toggleBtn = document.querySelector('.navbar_toogleBtn');
                 const menu = document.querySelector('.navbar_menu');
                 const links = document.querySelector('.navbar_links');
-    
+
                 toggleBtn.addEventListener('click', () => {
                     menu.classList.toggle('active');
                     links.classList.toggle('active');
@@ -196,7 +218,7 @@ let doAll =
                 // let navbarMenu = document.querySelector(".navbar_menu").childNodes;
             });
         },
-        insertFooter: function() {
+        insertFooter: function () {
             let footer = document.getElementById("putFooterHere");
             ajaxGET("/components/footer.html", function (data) {
                 footer.innerHTML = data;
