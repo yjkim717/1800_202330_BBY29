@@ -105,7 +105,13 @@ let doAll =
                             });
                         });
                         document.getElementById("requestButton").addEventListener("click", function (e) {
-                            mapFunc.lineup();
+                            doAll.mapFunc.lineup();
+                            let promise = new Promise(function(resolve, reject){
+                                setTimeout(()=>resolve("done"), 5000);
+                            });
+                            promise.then(function(result){
+                                
+                            });
                         });
                     }
                     let exitButton = document.getElementById("exitButton");
