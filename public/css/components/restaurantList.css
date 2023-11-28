@@ -28,7 +28,6 @@ Color Palette:
   border-radius: 12px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  font-family: sans-serif;
 }
 .restaurant:hover{
   background-color: rgba(255, 216, 228, 0.5);
