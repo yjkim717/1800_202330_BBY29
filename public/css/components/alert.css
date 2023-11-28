@@ -2,7 +2,7 @@
     position: absolute;
     display: block;
     z-index: 10000;
-    background: transparent;
+    background: rgba(255, 216, 228, 0.4);
     border: 8px solid rgba(255, 216, 228, 0.9);
     backdrop-filter: blur(10px);
     color: #625B71;
@@ -39,5 +39,120 @@
 #accept.btn-primary {
     transform: scale(0.5);
 }
+/*///////*/
 
+.bub {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, .01);
+    backdrop-filter: blur(2px);
+    position: absolute;
+    bottom: -100px;
+    animation: bubble 1s ease-in-out;
+}
+
+.bub::before {
+    position: absolute;
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: 250px;
+    right: 23px;
+}
+
+.bub.a {
+    left: 10%;
+    background-color: rgba(254, 247, 255,0.9);
+    animation: bubble2 2s ease-in 5s forwards;
+}
+
+.bub.b {
+    left: 20%;
+    background-color: rgba(255, 216, 228, 0.5);
+    animation: bubble 1.5s ease-in 5s forwards;
+}
+
+.bub.c {
+    left: 28%;
+    background-color: rgba(236, 230, 240, 0.5);
+    animation: bubble 5s ease-in 5s forwards;
+}
+
+.bub.d {
+    left: 40%;
+    background-color: rgba(103, 80, 164, 0.3);
+    animation: bubble 1.8s ease-in .5s;
+}
+
+.bub.e {
+    left: 75%;
+    background-color: rgba(98, 91, 113, 0.3);
+    animation: bubble2 2.3s ease-in 2.5s;
+}
+
+.bub.f {
+    left: 90%;
+    background-color: rgba(103, 80, 164, 0.3);
+    animation: bubble 2.5s ease-in 3s;
+}
+
+.bub.g {
+    left: 60%;
+    background-color: rgba(98, 91, 113, 0.3);
+    animation: bubble 2.2s ease-in 2s;
+}
+
+.bub.k {
+    left: 50%;
+    background-color: rgba(236, 230, 240, 0.5);
+    animation: bubble 1.6s ease-in 2s;
+}
+
+.bub.i {
+    left: 65%;
+    background-color: rgba(255, 216, 228, 0.5);
+    animation: bubble2 1.8s ease-in 2.1s;
+}
+
+.bub.j {
+    left: 3%;
+    background-color: rgba(255, 216, 228, 0.5);
+    animation: bubble 2s ease-in 1.5s;
+}
+
+.bub.h {
+    left: 35%;
+    background-color: rgba(255, 216, 228, 0.5);
+    animation: bubble2 3s ease-in;
+}
+
+@keyframes bubble {
+    0% {
+        opacity: 0;
+    }
+    10%,
+    93% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(90px, -700px);
+        display: none;
+    }
+}
+
+@keyframes bubble2 {
+    0% {
+        opacity: 0;
+    }
+    10%,
+    93% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-90px, -700px);
+        display: none;
+    }
+}
 
