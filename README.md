@@ -29,13 +29,6 @@
   <img src="/public/img/readme.png" alt="Product Name Screen Shot" height="500" align="center">
 </div>
 
-### Built With
-
-* [![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow.svg?style=for-the-badge&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-* [![HTML](https://img.shields.io/badge/HTML-5-orange.svg?style=for-the-badge&logo=html5)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-* [![CSS](https://img.shields.io/badge/CSS-3-blue.svg?style=for-the-badge&logo=css3)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-* [![DOM](https://img.shields.io/badge/DOM-API-green.svg?style=for-the-badge&logo=dom)](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
-* [![Bootstrap](https://img.shields.io/badge/Bootstrap-5-purple.svg?style=for-the-badge&logo=bootstrap)](https://getbootstrap.com/)
 
 ## Coding Standards:
 -camelCase
@@ -65,19 +58,6 @@ Technologies used for this project:
 
 ## Content
 Content of the project folder:
-
-- **app** (dynamically rendered files that are "server owned")
-    - *data* (json, xml, etc.)
-    - *pages*
-    - *js*
-        - *client.js* (fetch)
-        - *pages* (render components)
-- **public** (Static files for clients)
-    - *components*
-    - *css*
-    - *img*
-    - *font*
-    - *js*
 
 ```
  Top level of project folder: 
