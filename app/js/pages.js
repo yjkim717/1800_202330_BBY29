@@ -164,18 +164,7 @@ let doAll =
             let posterID = user.uid;
             let number = document.getElementById("numberOfPeople").value;
 
-            // //TODO: Grab array of restaurants selected from signup popup
-            // // TODO: Loop the bottom code for each restaurant
-            // $("input:checked.selectRestaurant").each((index, element) => {
-            //     const restaurantID = $(element).attr("dataId");
-            //     //TODO: add to requestlist of user the id of newly made request object
-            //     db.collection("signup").add({
-            //         posterID,
-            //         restaurantID,
-            //         number,
-            //         status: true
-            //     })
-            // });
+
             $("input:checked.selectRestaurant").add((index, element) => {
                 const restaurantID = $(element).attr("dataId");
                 const number = document.getElementById("numberOfPeople").value;
@@ -256,6 +245,7 @@ let doAll =
                                     db.collection("signup").doc(data).delete().then(() => console.log("Delete success"));
                                 })
                             });
+                            db.collection("restaurants")
                             //Send confirmation request to restaurant
                             document.body.removeChild(alert);
                             document.body.removeChild(document.getElementById("alertBubbles"));

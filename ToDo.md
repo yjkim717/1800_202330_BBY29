@@ -32,7 +32,8 @@ global.css contains attributes that apply universally.
 - after login success on map page i hope it says "Welcome Back" as a 2s popup
 
 ### wednesday 12 pm
-
+- team* icon 다시 나타나게
+- status.js accept button이 눌리면 alert가게끔
 ### John 
 - confirm pop up* 
 - buttons*
