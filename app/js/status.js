@@ -52,6 +52,8 @@ function displayWaitlistWithStatus(restaurantId) {
                                 acceptButton.textContent = 'Accept';
                                 acceptButton.addEventListener('click', function () {
                                     console.log('Accepted: ' + userDoc.data().name);
+                                    db.collection('users').doc(userDoc.id).update({ waiting: false });
+                                    statusCell.innerHTML = '<div class="red-circle"></div> Not Waiting';
                                     acceptCell.textContent = '--------';
                                     declineCell.textContent = '--------';
                                 });

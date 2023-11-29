@@ -161,6 +161,7 @@ let doAll =
                 console.log("NOT USER SIGNEDD IN");
                 return;
             }
+            db.collection("users").doc(user.uid).update({ waiting: true });
             let posterID = user.uid;
             let number = document.getElementById("numberOfPeople").value;
 
