@@ -176,13 +176,13 @@ let doAll =
             //         status: true
             //     })
             // });
-            $("input:checked.selectRestaurant").each((index, element) => {
+            $("input:checked.selectRestaurant").add((index, element) => {
                 const restaurantID = $(element).attr("dataId");
                 const number = document.getElementById("numberOfPeople").value;
 
                 db.collection("signup").add({
                     posterID: user.uid,
-                    restaurantID,
+                    restaurantID: 1114,
                     number,
                     status: true
                 })

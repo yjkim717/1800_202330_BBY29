@@ -12,7 +12,7 @@ document.getElementById('searchButton').addEventListener('click', function () {
                     var resultMessage = document.getElementById('resultMessage');
                     resultMessage.innerHTML = `Hello, ${docData.name}`;
 
-                    displayWaitlistWithStatus(doc.id);
+                    displayWaitlistWithStatus(doc.id, restaurantCode);
                     return;
                 }
             });
@@ -23,7 +23,7 @@ document.getElementById('searchButton').addEventListener('click', function () {
         });
 });
 
-function displayWaitlistWithStatus(restaurantId) {
+function displayWaitlistWithStatus(restaurantId, restaurantCode) {
     var waitlistBody = document.getElementById('waitlistBody');
 
     db.collection('restaurants').doc(restaurantId).get()
@@ -47,7 +47,7 @@ function displayWaitlistWithStatus(restaurantId) {
 
                             nameCell.textContent = userDoc.data().name;
 
-                            fetchSignupInfo(userDoc.id)
+                            fetchSignupInfo(userDoc.id, restaurantCode)
                                 .then(function (signupData) {
                                     var numGuests = signupData.number;
                                     numGuestCell.textContent = numGuests;
@@ -100,10 +100,11 @@ function clearWaitlist() {
     waitlistBody.innerHTML = "";
 }
 
-function fetchSignupInfo(userUid) {
+function fetchSignupInfo(userUid, restaurantCode) {
     return new Promise(function (resolve, reject) {
         db.collection('signup')
             .where('posterID', '==', userUid)
+            .where('restaurantID', '==', restaurantCode)
             .get()
             .then(function (signupQuerySnapshot) {
                 signupQuerySnapshot.forEach(function (signupDoc) {
@@ -115,3 +116,4 @@ function fetchSignupInfo(userUid) {
             });
     });
 }
+
