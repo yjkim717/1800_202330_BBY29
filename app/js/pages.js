@@ -164,17 +164,44 @@ let doAll =
             let posterID = user.uid;
             let number = document.getElementById("numberOfPeople").value;
 
-            //TODO: Grab array of restaurants selected from signup popup
-            // TODO: Loop the bottom code for each restaurant
+            // //TODO: Grab array of restaurants selected from signup popup
+            // // TODO: Loop the bottom code for each restaurant
+            // $("input:checked.selectRestaurant").each((index, element) => {
+            //     const restaurantID = $(element).attr("dataId");
+            //     //TODO: add to requestlist of user the id of newly made request object
+            //     db.collection("signup").add({
+            //         posterID,
+            //         restaurantID,
+            //         number,
+            //         status: true
+            //     })
+            // });
             $("input:checked.selectRestaurant").each((index, element) => {
                 const restaurantID = $(element).attr("dataId");
-                //TODO: add to requestlist of user the id of newly made request object 
+                const number = document.getElementById("numberOfPeople").value;
+
                 db.collection("signup").add({
-                    posterID,
+                    posterID: user.uid,
                     restaurantID,
                     number,
                     status: true
                 })
+                    .then((docRef) => {
+                        const requestID = docRef.id;
+
+                        db.collection("users").doc(user.uid).update({
+                            myrequest: firebase.firestore.FieldValue.arrayUnion(requestID)
+                        })
+                            .then(() => {
+                                console.log("Request added to user's myrequest array");
+                            })
+                            .catch((error) => {
+                                console.error("Error updating user's myrequest array:", error);
+                            });
+                    })
+                    .catch((error) => {
+                        console.error("Error adding request:", error);
+                    });
             });
             if ($("input:checked.selectRestaurant").length > 0) {
                 db.collection("users").doc(user.uid).update({ waiting: true });
