@@ -93,3 +93,43 @@ loadGoogleMapsAPI().then(() => {
 });
 
 
+
+const urlParams = new URLSearchParams(window.location.search);
+const userId = urlParams.get('userId');
+
+if (userId) {
+    db.collection("users").doc(userId).get().then(doc => {
+        if (doc.exists) {
+            const userName = doc.data().name;
+            showWelcomeMessage(userName);
+        }
+    });
+}
+
+function showWelcomeMessage(userName) {
+    let welcomeMessage = document.createElement("div");
+    welcomeMessage.id = "welcomeMessage";
+    const upperCaseUserName = userName.toUpperCase();
+    welcomeMessage.innerText = 'Welcome back, ' + upperCaseUserName + '!';
+
+    welcomeMessage.style.position = "fixed";
+    welcomeMessage.style.top = "50%";
+    welcomeMessage.style.left = "50%";
+    welcomeMessage.style.transform = "translate(-50%, -50%)";
+    welcomeMessage.style.background = "rgba(255, 216, 228, 0.4)";
+    welcomeMessage.style.border = "8px solid rgba(255, 216, 228, 0.9)";
+    welcomeMessage.style.backdropFilter = "blur(10px)";
+    welcomeMessage.style.color = "#625B71";
+    welcomeMessage.style.fontSize = "20px";
+    welcomeMessage.style.padding = "20px";
+    welcomeMessage.style.borderRadius = "8px";
+
+    document.body.appendChild(welcomeMessage);
+
+    setTimeout(function () {
+        let welcomeMessage = document.getElementById("welcomeMessage");
+        if (welcomeMessage) {
+            document.body.removeChild(welcomeMessage);
+        }
+    }, 3000);
+}
