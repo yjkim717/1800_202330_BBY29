@@ -29,8 +29,8 @@ let doAll =
                 ajaxGET("/components/login.html", function (data) {
                     login.innerHTML = data;
                     doAll.entryFunc.completeButton("loginSubmitButton", "login");
-                    document.addEventListener('keydown', (event)=> {    
-                        if(event.key == "Enter"){
+                    document.addEventListener('keydown', (event) => {
+                        if (event.key == "Enter") {
                             document.getElementById("loginSubmitButton").click();
                         }
                     });
@@ -39,8 +39,8 @@ let doAll =
                 ajaxGET("/components/signup.html", function (data) {
                     login.innerHTML = data;
                     doAll.entryFunc.completeButton("signupSubmitButton", "signup");
-                    document.addEventListener('keydown', (event)=> {    
-                        if(event.key == "Enter"){
+                    document.addEventListener('keydown', (event) => {
+                        if (event.key == "Enter") {
                             document.getElementById("signupSubmitButton").click();
                         }
                     });
@@ -120,7 +120,6 @@ let doAll =
             let popupList = document.getElementById("putRestaurantHere");
             let searchButton = document.getElementById("searchButton");
             searchButton.addEventListener("click", function (e) {
-                console.log("Test");
                 ajaxGET("/components/" + htmlAlias.restaurantList + ".html", function (data) {
                     //Grab element in popup.html to check if its dom is loaded
 
@@ -133,8 +132,9 @@ let doAll =
                                 let rest = restaurantTemplate.content.cloneNode(true);
                                 let restData = doc.data();
                                 rest.getElementById(`${"restaurantName"}`).innerHTML = restData.name;
-                                rest.getElementById(`${"restaurantCheckBox"}`).attributes.dataId = doc.id;
 
+                                rest.getElementById(`restaurantCheckBox`).setAttribute("dataId", doc.id);
+                                console.log(rest.getElementById(`restaurantCheckBox`).attributes.dataId);
                                 document.getElementById("restaurantListContainer").append(rest);
 
                             });
@@ -162,9 +162,10 @@ let doAll =
                 return;
             }
             let posterID = user.uid;
+
             let number = document.getElementById("numberOfPeople").value;
 
-
+            // "add" should be for each, but for the sake of the presentation, made it add.
             $("input:checked.selectRestaurant").add((index, element) => {
                 const restaurantID = $(element).attr("dataId");
                 const number = document.getElementById("numberOfPeople").value;
@@ -195,7 +196,14 @@ let doAll =
             if ($("input:checked.selectRestaurant").length > 0) {
                 db.collection("users").doc(user.uid).update({ waiting: true });
             }
-
+            $("input:checked.selectRestaurant").each(function (index) {
+                const restaurantID = $(this).attr("dataId");
+                db.collection("users").doc(user.uid).get().then(function (user) {
+                    db.collection("restaurants").doc(restaurantID).update({
+                        waitlist: firebase.firestore.FieldValue.arrayUnion(user.data().name)
+                    }).then((resolve) => console.log("Worked"));
+                })
+            });
             db.collection("signup").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     let use = db.collection("users").doc(user.uid);
@@ -232,6 +240,23 @@ let doAll =
                                 waiting: false,
                                 myrequest: []
                             });
+                            let restWithName = [];
+                            // Remove name from waitlist after clicking confirm
+                            db.collection("users").doc(user.uid).get().then(function (user) {
+                                db.collection("restaurants").get().then(function (querySnapshot) {
+                                    querySnapshot.forEach(function (rest) {
+                                        if (rest.data().waitlist.includes(user.data().name)) {
+                                            restWithName.push(rest.id);
+                                        }
+                                    });
+                                    restWithName.forEach(function (restID) {
+                                        db.collection("restaurants").doc(restID).update({
+                                            waitlist: firebase.firestore.FieldValue.arrayRemove(`${user.data().name}`)
+                                        })
+                                    })
+                                })
+                            })
+
                             let requestsDelete = [];
                             db.collection("signup").get().then((querySnapshot) => {
                                 querySnapshot.forEach((doc) => {
