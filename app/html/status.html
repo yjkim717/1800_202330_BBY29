@@ -29,16 +29,17 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/css/global.css">
 
-  <link rel="stylesheet" href="/css/pages/map.css">
+  <link rel="stylesheet" href="/css/pages/status.css">
   <link rel="stylesheet" href="/css/components/restaurantList.css">
   <link rel="stylesheet" href="/css/components/navbar.css">
   <link rel="stylesheet" href="/css/components/footer.css">
 </head>
 
-<body id="map">
+<body>
+
   <nav id="putNavbarHere"></nav>
 
-  <div class="status">
+  <div class="status container-fluid d-flex flex-column justify-content-center align-items-center">
 
     <div class="title">
       <h4>This page is for Restaurant owner</h4>
@@ -49,25 +50,28 @@
         <button id="searchButton"></button>
       </div>
     </div>
+
+    <div id="resultContainer">
+      <h4 id="resultMessage"></h4>
+      <table id="waitlistTable" class="styled-table">
+        <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Waiting Status</th>
+        </tr>
+        </thead>
+        <tbody id="waitlistBody"></tbody>
+      </table>
+    </div>
   </div>
 
-
-  <div id="putRestaurantHere"></div>
   <nav id="putFooterHere"></nav>
 
-  <script src="/js/map.js"></script>
+  <script src="/js/status.js"></script>
   <script src="/js/pages.js"></script>
   <script>
-    doAll.mapFunc.doAllMap();
+    doAll.statusFunc.doAllStatus();
   </script>
-</body>
-
-</html>
-</title>
-</head>
-
-<body>
-
 </body>
 
 </html>

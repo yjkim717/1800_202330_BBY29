@@ -79,6 +79,13 @@ let doAll =
         }
     },
 
+    statusFunc: {
+        doAllStatus: function () {
+            doAll.helperFunc.insertNavbar();
+            doAll.helperFunc.insertFooter();
+        }
+    },
+
     mapFunc: {
         doAllMap: function () {
 
