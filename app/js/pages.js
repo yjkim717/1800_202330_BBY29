@@ -172,6 +172,8 @@ let doAll =
                     if (alert) {
                         alert.querySelector("#decline").addEventListener("click", function (e) {
                             // Nothing here because we need id of restaurant that is being declined
+                            document.body.removeChild(alert);
+                            document.body.removeChild(document.getElementById("alertBubbles"));
                         });
                         alert.querySelector("#accept").addEventListener("click", function (e) {
                             db.collection("users").doc(user.uid).update({
@@ -192,6 +194,8 @@ let doAll =
                                 })
                             });
                             //Send confirmation request to restaurant
+                            document.body.removeChild(alert);
+                            document.body.removeChild(document.getElementById("alertBubbles"));
                         });
                     }
                 });
