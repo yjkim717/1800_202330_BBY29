@@ -174,6 +174,7 @@ let doAll =
                             // Nothing here because we need id of restaurant that is being declined
                             document.body.removeChild(alert);
                             document.body.removeChild(document.getElementById("alertBubbles"));
+                            showWaitingMessage();
                         });
                         alert.querySelector("#accept").addEventListener("click", function (e) {
                             db.collection("users").doc(user.uid).update({
@@ -244,7 +245,31 @@ function readSignup() {
 }
 
 
+function showWaitingMessage() {
+    let waitingMessage = document.createElement("div");
+    waitingMessage.id = "waitingMessage";
+    waitingMessage.innerText = "Waiting for other Restaurant's response!";
 
+    waitingMessage.style.position = "fixed";
+    waitingMessage.style.top = "50%";
+    waitingMessage.style.left = "50%";
+    waitingMessage.style.transform = "translate(-50%, -50%)";
+    waitingMessage.style.padding = "20px";
+
+    waitingMessage.style.background = "rgba(255, 216, 228, 0.4)";
+    waitingMessage.style.border = "8px solid rgba(255, 216, 228, 0.9)";
+    waitingMessage.style.backdropFilter = "blur(10px)";
+    waitingMessage.style.color = "#625B71";
+
+    document.body.appendChild(waitingMessage);
+
+    setTimeout(function () {
+        let waitingMessage = document.getElementById("waitingMessage");
+        if (waitingMessage) {
+            document.body.removeChild(waitingMessage);
+        }
+    }, 3000);
+}
 
 
 console.log("pages.js end loading");
