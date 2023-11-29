@@ -159,7 +159,7 @@
           <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name">
           <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
           <textarea class="form-control" id="message" placeholder="Enter message" name="message"></textarea>
-          <button id="contactSubmitButton" type="button" class="btn">Send</button>
+          <button id="contactSubmitButton" type="button" class="btn" onclick="sendEmail()">Send</button>
         </div>
       </form>
     </div>
@@ -172,6 +172,7 @@
 
 
   <!-- Page scripts -->
+  <script src="/js/contactUs.js"></script>
   <script src="/js/pages.js"></script>
   <script>
     doAll.teamFunc.doAllTeam();
