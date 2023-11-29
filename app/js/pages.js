@@ -48,13 +48,15 @@ let doAll =
 
                         if (button === "loginSubmitButton") {
                             if (login()) {
-                                window.location.href = domain + "/map";
+                                const currentUserId = firebase.auth().currentUser.uid;
+                                window.location.href = domain + "/map?userId=" + currentUserId;
                             } else {
                                 alert("Login failed");
                             }
                         } else if (button === "signupSubmitButton") {
                             if (signup()) {
-                                window.location.href = domain + "/map";
+                                const currentUserId = firebase.auth().currentUser.uid;
+                                window.location.href = domain + "/map?userId=" + currentUserId;
                             } else {
                                 alert("Signup failed");
                             }
