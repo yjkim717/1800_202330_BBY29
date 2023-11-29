@@ -29,11 +29,21 @@ let doAll =
                 ajaxGET("/components/login.html", function (data) {
                     login.innerHTML = data;
                     doAll.entryFunc.completeButton("loginSubmitButton", "login");
+                    document.addEventListener('keydown', (event)=> {    
+                        if(event.key == "Enter"){
+                            document.getElementById("loginSubmitButton").click();
+                        }
+                    });
                 })
             } else if (search_param.get("authStyle") === "signup") {
                 ajaxGET("/components/signup.html", function (data) {
                     login.innerHTML = data;
-                    entryFunc.completeButton("signupSubmitButton", "signup");
+                    doAll.entryFunc.completeButton("signupSubmitButton", "signup");
+                    document.addEventListener('keydown', (event)=> {    
+                        if(event.key == "Enter"){
+                            document.getElementById("signupSubmitButton").click();
+                        }
+                    });
                 });
             } else {
                 console.log("Failed");
