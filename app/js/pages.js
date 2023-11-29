@@ -29,11 +29,21 @@ let doAll =
                 ajaxGET("/components/login.html", function (data) {
                     login.innerHTML = data;
                     doAll.entryFunc.completeButton("loginSubmitButton", "login");
+                    document.addEventListener('keydown', (event)=> {    
+                        if(event.key == "Enter"){
+                            document.getElementById("loginSubmitButton").click();
+                        }
+                    });
                 })
             } else if (search_param.get("authStyle") === "signup") {
                 ajaxGET("/components/signup.html", function (data) {
                     login.innerHTML = data;
-                    entryFunc.completeButton("signupSubmitButton", "signup");
+                    doAll.entryFunc.completeButton("signupSubmitButton", "signup");
+                    document.addEventListener('keydown', (event)=> {    
+                        if(event.key == "Enter"){
+                            document.getElementById("signupSubmitButton").click();
+                        }
+                    });
                 });
             } else {
                 console.log("Failed");
@@ -76,6 +86,22 @@ let doAll =
         doAllTeam: function () {
             doAll.helperFunc.insertNavbar();
             doAll.helperFunc.insertFooter();
+            this.sendEmail();
+        },
+        sendEmail: function () {
+            let user = firebase.auth().currentUser;
+            let submit = document.getElementById("contactSubmitButton");
+            let message = document.getElementById("message");
+            let email = document.getElementById("email");
+            let name = document.getElementById("name");
+            submit.addEventListener("click", function (e) {
+                const recipient = 'johnbuspark@example.com';
+                const subject = 'LineUp Message';
+                const body = `${message.value}`;
+                const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+                window.location.href = mailtoLink;
+            });
         }
     },
 
@@ -199,8 +225,8 @@ let doAll =
                                         requestsDelete.push(doc.id);
                                     }
                                 });
-                                requestsDelete.forEach(function(data){
-                                    db.collection("signup").doc(data).delete().then(()=>console.log("Delete success"));
+                                requestsDelete.forEach(function (data) {
+                                    db.collection("signup").doc(data).delete().then(() => console.log("Delete success"));
                                 })
                             });
                             //Send confirmation request to restaurant
