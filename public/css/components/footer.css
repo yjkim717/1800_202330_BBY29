@@ -1,61 +1,46 @@
-
-/* 
-Color Palette:
-    purple: #EADDFF
-    pink: #FFD8E4
-    light grey: #E6E0E9
-    dark purple: #D0BCFF
-    dark grey: #625B71
-*/
-
-#putFooterHere, .footer {
-    width: 100vw;
-    position: absolute;
-    bottom: 0;
-    border: transparent;
-    background: #1D1B20;
-    /*background: linear-gradient(to bottom, transparent, #E6E0E9);*/
-    margin-bottom: 0vh !important;
-}
-
-.footer {
+.footer{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    bottom: 0;
+    margin-bottom: 0 !important;
     align-items: center;
-    padding: 8px 20px;
+    background: rgba(98,91,113,0.8);
+    border-top-left-radius: 100px;
+    padding: 20px 10px;
+}
+.column {
+    margin-top: auto;
+    padding-bottom: 10px;
+}
+.column a {
+    color: #FEF7FF;
+    padding: 20px;
+}
+.column a:hover {
+    color: #FFD8E4;
+    text-decoration: underline;
 }
 
-.backButton {
-    display: none;
-    position: absolute;
-    left: 28px;
-    padding: 20px 20px;
+.column1 {
+    margin-top: auto;
+    padding-bottom: 10px;
 }
-
-.infoButton{
-    display: none;
-    position: absolute;
-    right: 28px;
-    padding: 20px 20px;
+.column1 a {
+    color: #FEF7FF;
+    padding: 20px;
+}
+.column1 a:hover {
+    color: #FFD8E4;
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 768px) {
 
-    /*#putFooterHere, .footer {*/
-    /*    margin-bottom: 200px;  !* Adjust this value as needed *!*/
-    /*    padding: 8px 20px;*/
-    /*}*/
-
-
-    .infoButton,
-    .backButton {
+    .column1 a {
         display: block;
-        /*margin-bottom: 100px;*/
+        text-align: center;
+        padding-top: 3px;
     }
 
-    /*.copyRight{*/
-    /*    display: none;*/
-    /*}*/
 }
-
-

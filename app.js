@@ -18,6 +18,7 @@ app.use("/css", express.static("public/css"));
 app.use("/img", express.static("public/img"));
 app.use("/font", express.static("public/font"));
 app.use("/components", express.static("public/components"));
+app.use("/html", express.static("app/html"));
 
 app.get("/", function (req, res) {
     let doc = fs.readFileSync("./app/html/index.html", "utf8");
@@ -31,6 +32,11 @@ app.get("/entry", function (req, res) {
 
 app.get("/map", function (req, res) {
     let doc = fs.readFileSync("./app/html/map.html", "utf8");
+    res.send(doc);
+});
+
+app.get("/status", function (req, res) {
+    let doc = fs.readFileSync("./app/html/status.html", "utf8");
     res.send(doc);
 });
 
@@ -53,6 +59,11 @@ app.get("/components/" + htmlAlias.restaurantList + ".html", function(req, res){
     let doc = fs.readFileSync("/public/components/" + htmlAlias.restaurantList + ".html", "utf8");
     res.send(doc);
 });
+
+app.get("/components/alert.html", function(req, res){
+    let doc = fs.readFileSync("/public/components/alert.html", "utf8");
+    res.send(doc);
+})
 
 let port = 8000;
 app.listen(port, function () {

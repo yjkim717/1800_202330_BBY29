@@ -1,13 +1,13 @@
-<div class="container pt-3" id="signup">
-    <form id="login-form">  
-        <div class="form-group d-flex flex-column align-items-center gap-2 pb-1" >
-            <!-- TODO: Place proper regex pattern for all inputs -->
-            <input type="email" class="form-control w-50 " id="email" placeholder="Enter email" name="email">
-            <input type="password" class="form-control w-50 " id="password" placeholder="Enter password" name="password">
-            <input type="username" class="form-control w-50 " id="name" placeholder="Enter name" name="name">
-            <input type="text" class="form-control w-50 " id="number" placeholder="Enter phone #" name="number" pattern="[0-9]{10,11}">
+<div class="d-flex justify-content-center align-items-center vh-100" id="signup">
+    <form id="signup-form">
+        <div class="form-group d-flex flex-column align-items-center gap-2 pb-1">
+            <h1>Sign up</h1>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+            <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+            <input type="username" class="form-control" id="name" placeholder="Enter name" name="name">
+            <input type="text" class="form-control" id="number" placeholder="Enter phone #" name="number" pattern="[0-9]{10,11}">
             <button id="signupSubmitButton" type="button" class="btn">Sign up</button>
+            <p>Have an account? <a href="/entry?authStyle=login">Login</a></p>
         </div>
     </form>
 </div>
-

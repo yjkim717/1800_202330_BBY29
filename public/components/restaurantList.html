@@ -1,6 +1,6 @@
 <div id="restaurantList" class="popup-container">
     <div class="popup-header">Line up!</div>
-    <button id="exitButton"><img id="exitButtonImage" src="/img/returnButton.png"></button>
+    <button id="exitButton"><img id="exitButtonImage" src="/img/close.png"></button>
     <p>Restaurants near your location!</p>
 
     <form id="restaurantListForm">
@@ -11,11 +11,11 @@
     <template id="restaurantTemplate">
         <div class="restaurant container d-flex flex-row justify-content-between">
             <span class="restaurant-name" id="restaurantName"></span>
-            <input class="form-check-input btn-primary selectRestaurant" type="checkbox" value="checked" id="restaurantCheckBox" dataId="">
+            <input class="form-check-input selectRestaurant" type="checkbox" value="checked" id="restaurantCheckBox" dataId="">
         </div>
     </template>
 
     <input type="number" id="numberOfPeople" value="1">
-    <button id="requestButton" class="btn-request">Request</button>
+    <button id="requestButton" class="btn btn-primary">Request</button>
 </div>
 

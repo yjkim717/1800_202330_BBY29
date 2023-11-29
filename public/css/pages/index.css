@@ -1,16 +1,12 @@
-body {
-    background: url('/img/background.gif');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    position: relative;
-    width:100vw;
-    height:100vh;
-    overflow: hidden;
-}
 
 #content{
-    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 100%;
+    height: 90vh;
+    overflow-y: scroll;
+    z-index: -5;
 }
 
 #loginButton, #signupButton {
@@ -23,14 +19,34 @@ button {
     line-height: 50px;
 }
 
-/* Jenny editing front page*/
+
+
+#logo {
+    width: 90%;
+    height: auto;
+    background: transparent;
+    border: 4px solid rgba(103, 80, 164, 0.1);
+    backdrop-filter: blur(10px);
+    color: #625B71;
+    border-radius: 12px;
+    padding: 30px 40px;
+}
+
+#logo h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+#logo p {
+    font-size: 18px;
+    text-align: left;
+}
 
 .scoller{
     height:fit-content;
 }
 
 .container {
-
     width: 100%;
     min-height:fit-content;
     max-width: 600px;
@@ -39,11 +55,15 @@ button {
     transform-style: preserve-3d;
     justify-content: center;
     align-items: center;
+<<<<<<< HEAD
     flex-direction: column; 
+=======
+    flex-direction: column;
+    transform: translateX(15%);
+>>>>>>> c126dd4e3d864cd4bfca8bd3bac14a5de91be13d
 }
 
 .cards {
-
     position: relative;
     height: 500px;
     width: 430px;
@@ -55,7 +75,6 @@ button {
 
 
 .cards label {
-
     position: absolute;
     width: 300px;
     left: 0;
@@ -66,7 +85,6 @@ button {
 }
 
 .cards .card{
-
     position: relative;
     height: 100%;
     border-radius: 20px;
@@ -145,11 +163,143 @@ button {
 }
 
 @media screen and (max-width: 768px){
+    .container {
+        padding-top: 370px;
+    }
+
+    #logo {
+        display: block;
+        margin-top: 300px;
+    }
+
+    .cards {
+        display: flex;
+        position: relative;
+        height: 4300px; 
+        width: 350px;
+        margin-bottom: 20px;
+        margin-left: 100%;
+        margin-right: 105%;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+        transition: filter 0.5s ease;
+    }
+    
+    
+    .cards label {
+        position: absolute;
+        width: 250px;
+        left: 0;
+        right: 0;
+        margin: 0;
+        cursor: pointer;
+        transition: transform 0.55s ease;
+    }
+    
+    .cards .card{
+        position: relative;
+        height: 80%;
+        border-radius: 20px;
+        padding: 0;
+    }
+    
+    .card .image{
+    
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .card .image img {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+        object-fit: cover;
+    }
+    .cards>label{
+        border-radius: 10%;
+    }
+
+    #s1:checked~.cards #slide4,
+#s2:checked~.cards #slide5,
+#s3:checked~.cards #slide1,
+#s4:checked~.cards #slide2,
+#s5:checked~.cards #slide3 {
+    box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 45%);
+    transform: translate3d(-45%, 0, -100px);
+}
+
+#s1:checked~.cards #slide5,
+#s2:checked~.cards #slide1,
+#s3:checked~.cards #slide2,
+#s4:checked~.cards #slide3,
+#s5:checked~.cards #slide4 {
+    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 45%);
+    transform: translate3d(-25%, 0, -60px);
+}
+
+#s1:checked~.cards #slide1,
+#s2:checked~.cards #slide2,
+#s3:checked~.cards #slide3,
+#s4:checked~.cards #slide4,
+#s5:checked~.cards #slide5 {
+    filter: blur(0);
+    box-shadow: 0 25px 50px 0 rgba(0, 0, 0, 50%);
+    transform: translate3d(0, 0, 0);
+}
+
+#s1:checked~.cards #slide2,
+#s2:checked~.cards #slide3,
+#s3:checked~.cards #slide4,
+#s4:checked~.cards #slide5,
+#s5:checked~.cards #slide1 {
+    filter: blur(5px);
+    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 45%);
+    transform: translate3d(25%, 0, -60px);
+}
+
+#s1:checked~.cards #slide3,
+#s2:checked~.cards #slide4,
+#s3:checked~.cards #slide5,
+#s4:checked~.cards #slide1,
+#s5:checked~.cards #slide2 {
+    box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 45%);
+    transform: translate3d(45%, 0, -100px);
+}
+
+#logo p {
+    font-size: 14px;
+    text-align: left;
+}
+
+#loginButton, #signupButton {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+button {
+    /*height: 50px;*/
+    line-height: 35px;
+}
+
+.btn-primary{
+    background:#625B71;
+    color:#fff;
+    border:none;
+    position:relative;
+    height:30px;
+    font-size:1.1em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+}
 
 }
 
 @media screen and (min-width: 769px){
 
+
+    
 }
 
 
