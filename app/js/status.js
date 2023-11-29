@@ -10,16 +10,13 @@ document.getElementById('searchButton').addEventListener('click', function () {
                 var docData = doc.data();
                 if (docData.code === restaurantCode) {
                     var resultMessage = document.getElementById('resultMessage');
-                    resultMessage.innerHTML = `Hello ${docData.name}`;
+                    resultMessage.innerHTML = `Hello, ${docData.name}`;
 
                     displayWaitlistWithStatus(doc.id);
                     return;
                 }
             });
 
-            var resultMessage = document.getElementById('resultMessage');
-            resultMessage.textContent = `No restaurant found with code: ${restaurantCode}`;
-            clearWaitlist();
         })
         .catch(function (error) {
             console.error('Error getting documents: ', error);
@@ -44,13 +41,36 @@ function displayWaitlistWithStatus(restaurantId) {
                             var row = waitlistBody.insertRow();
                             var nameCell = row.insertCell(0);
                             var statusCell = row.insertCell(1);
+                            var acceptCell = row.insertCell(2);
+                            var declineCell = row.insertCell(3);
 
                             nameCell.textContent = userDoc.data().name;
                             if (userDoc.data().waiting) {
                                 statusCell.innerHTML = '<div class="green-circle"></div> Waiting';
+
+                                var acceptButton = document.createElement('button');
+                                acceptButton.textContent = 'Accept';
+                                acceptButton.addEventListener('click', function () {
+                                    console.log('Accepted: ' + userDoc.data().name);
+                                    acceptCell.textContent = '--------';
+                                    declineCell.textContent = '--------';
+                                });
+                                acceptCell.appendChild(acceptButton);
+
+                                var declineButton = document.createElement('button');
+                                declineButton.textContent = 'Decline';
+                                declineButton.addEventListener('click', function () {
+                                    console.log('Declined: ' + userDoc.data().name);
+                                    acceptCell.textContent = '--------';
+                                    declineCell.textContent = '--------';
+                                });
+                                declineCell.appendChild(declineButton);
                             } else {
                                 statusCell.innerHTML = '<div class="red-circle"></div> Not Waiting';
+                                acceptCell.textContent = '--------';
+                                declineCell.textContent = '--------';
                             }
+
                         });
                     })
                     .catch(function (error) {

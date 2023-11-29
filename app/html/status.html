@@ -39,7 +39,7 @@
 
   <nav id="putNavbarHere"></nav>
 
-  <div class="status container-fluid d-flex flex-column justify-content-center align-items-center">
+  <div class="status container-fluid d-flex flex-column align-items-center" id="status">
 
     <div class="title">
       <h4>This page is for Restaurant owner</h4>
@@ -51,13 +51,16 @@
       </div>
     </div>
 
+    <h4 id="resultMessage"></h4>
+
     <div id="resultContainer">
-      <h4 id="resultMessage"></h4>
       <table id="waitlistTable" class="styled-table">
         <thead>
         <tr>
           <th>Customer Name</th>
           <th>Waiting Status</th>
+          <th>Accept</th>
+          <th>Decline</th>
         </tr>
         </thead>
         <tbody id="waitlistBody"></tbody>
