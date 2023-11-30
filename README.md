@@ -29,14 +29,6 @@
   <img src="/public/img/readme.png" alt="Product Name Screen Shot" height="500" align="center">
 </div>
 
-
-## Coding Standards:
--camelCase
-
-
-
-
-
 ## CapWise
 
 * [General info](#general-info)
@@ -68,45 +60,43 @@ Content of the project folder:
  └── README.md                # documentation and information about LineUp.
 
 It has the following subfolders and files:
-├── .idea                     # Folder for ?????????
 ├── app                             # Folder for dynamically rendered files that are "server owned"
         /html
-            /entry.html
-            /index.html
-            /map.html
-            /status.html
-            /team.html
-            /template.html
+            /entry.html             # login/singin html
+            /index.html             # main page
+            /map.html               # map page
+            /status.html            # status page for restaurant owners
+            /team.html              # team + contact us page
+            /template.html          # template for html
         /js
-            /authentication.js
-            /client.js
-            /firebaseAPI.js
-            /global.js
-            /map.js
-            /pages.js
+            /authentication.js      # firebase auth for login/sign up
+            /firebaseAPI.js         # firebase config
+            /global.js              # universal js
+            /map.js                 # google map api
+            /pages.js               # js for each pages
         
 ├── public                          # Folder for static files for clients
         /components
-            /footer.html
-            /login.html
-            /navbar.html
-            /restaurantList.html
-            /signup.html
+            /footer.html            # footer html
+            /login.html             # login html
+            /navbar.html            # navbar html
+            /restaurantList.html    # restaurant list html
+            /signup.html            # signup html
         /css
-            /components                 # 
-                /footer.css
-                /login.css
-                /navbar.css
-                /restaurantList.css
-                /signup.css
-            /pages.css                  # 
-                /entry.css
-                /index.css
-                /map.css
-                /team.css
-            /global.css
+            /components                 
+                /footer.css          # footer css
+                /login.css           # login css
+                /navbar.css          # navbar css
+                /restaurantList.css  # restaurant css
+                /signup.css          # signup css
+            /pages.css                   
+                /entry.css           # signup and login page css
+                /index.css           # main page css
+                /map.css             # map page css
+                /team.css            # team page css
+            /global.css              # global css
         /font
-            /Pacifico-Regular.ttf
+            /Pacifico-Regular.ttf    $ font for Logo
         /img
 
 ```
@@ -119,8 +109,14 @@ It has the following subfolders and files:
 - Logo homemade!
 
 ## Contact
-* John Smith - jsmith@my.bcit.ca
-* ...
+* YeoJin Jenny Kim - yejinjenny717@gmail.com
+* John Park - johnbuspark@gmail.com
+* Thao Tran - tranthphuongthao2005@gmail.com
+* Ash Song - gwangjuha@gmail.com
+
+## Coding Standards:
+-camelCase
+
 
 ## Acknowledgements
     -Use window.location.href when synchronously reloading an entire page (redirecting to different page)
