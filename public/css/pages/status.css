@@ -13,6 +13,7 @@
     margin-top: 20px;
     border-spacing: 50px;
     align-items: center;
+    width: 100%;
 }
 
 h4{
@@ -168,3 +169,59 @@ button {
 }
 
 
+@media screen and (max-width: 768px){
+
+    .styled-table {
+        background: transparent;
+        border: 4px solid rgba(103, 80, 164, 0.2);
+        backdrop-filter: blur(10px);
+        color: #625B71;
+        border-radius: 12px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        margin-top: 20px;
+        border-spacing: 50px;
+        align-items: center;
+        width: 100%;
+    }
+
+    .styled-table th, .styled-table td {
+        padding: 20px;
+        font-size: 85%;
+      }
+
+
+      button {
+        width: 110%;
+        background: #FEF7FF;
+        border: none;
+        outline: none;
+        border-radius: 40px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+        font-size: 16px;
+        color: #625B71;
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .styled-table thead tr {
+        border-bottom: 4px solid rgba(103, 80, 164, 0.2);
+        padding: 30px;
+    }
+
+}
+
+@media screen and (max-width: 444px){
+
+    .styled-table th, .styled-table td {
+        padding: 5px;
+        font-size: 70%;
+      
+
+    .styled-table thead tr {
+        border-bottom: 4px solid rgba(103, 80, 164, 0.2);
+        padding: 30px;
+    }
+
+}
+
+}

@@ -7,6 +7,28 @@ Color Palette:
     dark grey: #625B71
 */
 @media screen and (max-width: 768px){
+  input {
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 3px solid rgba(103, 80, 164, 0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #625B71;
+    display: block; 
+    margin: 0; 
+    align-items: center;
+  justify-content: center;
+  }
+  #requestButton.btn-primary {
+    margin-right: 10px;
+    transform: scale(0.5);
+    display: block; 
+    margin: 0; 
+    align-items: center;
+  justify-content: center;
+
+  }
 
 }
 

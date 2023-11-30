@@ -13,6 +13,27 @@
     animation: shake 1s ease-in-out;
 }
 
+#alertFooter {
+    flex: auto;
+    display: flex;
+    justify-content: center;
+
+}
+
+#accpet {
+
+    display: flex;
+    margin-left: 10%;
+
+}
+
+#decline {
+
+    display: flex;
+    margin-right: 10%;
+
+}
+
 #alertBox {
     padding: 10px;
 }
@@ -156,3 +177,62 @@
     }
 }
 
+@media screen and (max-width: 816px){
+
+.btn-primary{
+    background:#625B71;
+    color:#fff;
+    border:none;
+    position:relative;
+    height:50px;
+    font-size:1.6em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+}
+.btn-primary:hover{
+    background:#E6E0E9;
+    color:#625B71;
+}
+.btn-primary:before,.btn-primary:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #625B71;
+    transition:400ms ease all;
+}
+.btn-primary:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+}
+.btn-primary:hover:before,.btn-primary:hover:after{
+    width:100%;
+    transition:800ms ease all;
+ 
+        
+}
+#alertFooter {
+    flex: auto;
+    display: flex;
+    justify-content: center;
+
+}
+
+#accpet {
+    margin-left: 0.05%;
+
+}
+
+#decline {
+    margin-right: 0.05%;
+
+}
+  
+
+}
