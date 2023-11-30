@@ -55,12 +55,8 @@ button {
     transform-style: preserve-3d;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
-    flex-direction: column; 
-=======
     flex-direction: column;
     transform: translateX(15%);
->>>>>>> c126dd4e3d864cd4bfca8bd3bac14a5de91be13d
 }
 
 .cards {
@@ -164,7 +160,7 @@ button {
 
 @media screen and (max-width: 768px){
     .container {
-        padding-top: 230px;
+        padding-top: 260px;
         margin-top: 50px;
         margin-bottom: 50px;
     }
