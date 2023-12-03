@@ -3,9 +3,9 @@
 let doAll =
 {
     indexFunc: {
-        doAllIndex: function () {
-            doAll.helperFunc.insertNavbar();
-            doAll.helperFunc.insertFooter();
+        doAllIndex: async function () {
+            await doAll.helperFunc.insertNavbar();
+            await doAll.helperFunc.insertFooter();
             let login = document.getElementById("loginButton");
             let signup = document.getElementById("signupButton");
             login.addEventListener("click", function (e) {
@@ -19,66 +19,45 @@ let doAll =
     },
 
     entryFunc: {
-        doAllEntry: function () {
-            doAll.helperFunc.insertNavbar();
-            doAll.helperFunc.insertFooter();
+        doAllEntry: async function () {
+            await doAll.helperFunc.insertNavbar();
+            await doAll.helperFunc.insertFooter();
             let url = new URL(window.location.href);
             let search_param = url.searchParams;
-            let login = document.getElementById("putSigninHere");
-            if (search_param.get("authStyle") === "login") {
-                ajaxGET("/components/login.html", function (data) {
-                    login.innerHTML = data;
-                    doAll.entryFunc.completeButton("loginSubmitButton", "login");
-                    document.addEventListener('keydown', (event) => {
-                        if (event.key == "Enter") {
-                            document.getElementById("loginSubmitButton").click();
-                        }
-                    });
-                })
-            } else if (search_param.get("authStyle") === "signup") {
-                ajaxGET("/components/signup.html", function (data) {
-                    login.innerHTML = data;
-                    doAll.entryFunc.completeButton("signupSubmitButton", "signup");
-                    document.addEventListener('keydown', (event) => {
-                        if (event.key == "Enter") {
-                            document.getElementById("signupSubmitButton").click();
-                        }
-                    });
-                });
-            } else {
-                console.log("Failed");
-            }
-        },
-        completeButton: function (button, authStyle) {
-            let userInfo = document.getElementById(authStyle);
-            if (userInfo) {
-                let signupSubmitButton = document.getElementById(button);
-                if (signupSubmitButton) {
-                    signupSubmitButton.addEventListener("click", function (e) {
+            let signinContainer = document.getElementById("putSigninHere");
+            let authStyle = search_param.get("authStyle");
 
-                        if (button === "loginSubmitButton") {
-                            if (login()) {
-                                const currentUserId = firebase.auth().currentUser.uid;
-                                window.location.href = domain + "/map?userId=" + currentUserId;
-                            } else {
-                                alert("Login failed");
-                            }
-                        } else if (button === "signupSubmitButton") {
-                            if (signup()) {
-                                const currentUserId = firebase.auth().currentUser.uid;
-                                window.location.href = domain + "/map?userId=" + currentUserId;
-                            } else {
-                                alert("Signup failed");
-                            }
-                        }
-
-                    });
-                } else {
-                    console.log("signup submit button not found");
+            let data = await ajaxGET(`/components/${authStyle}.html`);
+            signinContainer.innerHTML = data;
+            await doAll.entryFunc.completeButton(`${authStyle}SubmitButton`, `${authStyle}`);
+            document.addEventListener('keydown', (event) => {
+                if (event.key == "Enter") {
+                    document.getElementById(`${authStyle}SubmitButton`).click();
                 }
-            } else {
-                console.log("signup element not found");
+            });
+        },
+        completeButton: async function (button, authStyle) {
+            let userInfo = document.getElementById(authStyle);
+            let signupSubmitButton = document.getElementById(button);
+            let signinSuccess;
+            let signupEvent = async function () {
+                if (authStyle == "login") {
+                    signinSuccess = await login();
+                } else if (authStyle == "signup") {
+                    signinSuccess = await signup();
+                } else {
+                    return "Wrong authstyle";
+                }
+                if (signinSuccess) {
+                    const currentUserId = firebase.auth().currentUser.uid;
+                    window.location.href = domain + "/map?userId=" + currentUserId;
+                } else {
+                    return "Sign in failed";
+                }
             }
+            signupSubmitButton.addEventListener("click", function (e) {
+                signupEvent().then((result) => alert(result));
+            });
         }
     },
 
@@ -113,111 +92,136 @@ let doAll =
     },
 
     mapFunc: {
-        doAllMap: function () {
-
-            doAll.helperFunc.insertNavbar();
-            doAll.helperFunc.insertFooter();
+        doAllMap: async function () {
+            await doAll.helperFunc.insertNavbar();
+            await doAll.helperFunc.insertFooter();
             let popupList = document.getElementById("putRestaurantHere");
             let searchButton = document.getElementById("searchButton");
-            searchButton.addEventListener("click", function (e) {
-                ajaxGET("/components/" + htmlAlias.restaurantList + ".html", function (data) {
-                    //Grab element in popup.html to check if its dom is loaded
 
-                    popupList.innerHTML = data;
-                    let restaurantTemplate = document.getElementById("restaurantTemplate");
-                    if (restaurantTemplate) {
-                        db.collection("restaurants").get().then((querySnapshot) => {
-                            querySnapshot.forEach((doc) => {
-                                //template elements don't have child nodes until you grab its ".content"
-                                let rest = restaurantTemplate.content.cloneNode(true);
-                                let restData = doc.data();
-                                rest.getElementById(`${"restaurantName"}`).innerHTML = restData.name;
-
-                                rest.getElementById(`restaurantCheckBox`).setAttribute("dataId", doc.id);
-                                console.log(rest.getElementById(`restaurantCheckBox`).attributes.dataId);
-                                document.getElementById("restaurantListContainer").append(rest);
-
-                            });
-                        });
-                        document.getElementById("requestButton").addEventListener("click", function (e) {
-                            doAll.mapFunc.lineup();
-                            doAll.mapFunc.openConfirm();
-                        });
-                    }
-                    let exitButton = document.getElementById("exitButton");
-                    if (exitButton) {
-                        exitButton.addEventListener("click", function (e) {
-                            popupList.innerHTML = "";
-                        });
-                    }
+            let searchButtonEvent = async function () {
+                let listData = await ajaxGET("/components/restaurantList.html");
+                popupList.innerHTML = listData;
+                let restaurantTemplate = document.getElementById("restaurantTemplate");
+                let querySnapshot = await db.collection("restaurants").get();
+                querySnapshot.forEach((doc) => {
+                    //template elements don't have child nodes until you grab its ".content"
+                    let rest = restaurantTemplate.content.cloneNode(true);
+                    let restData = doc.data();
+                    rest.getElementById(`restaurantName`).innerHTML = restData.name;
+                    rest.getElementById(`restaurantCheckBox`).setAttribute("dataId", doc.id);
+                    document.getElementById("restaurantListContainer").append(rest);
 
                 });
+                document.getElementById("requestButton").addEventListener("click", function (e) {
+                    doAll.mapFunc.lineup();
+                    doAll.mapFunc.openConfirm();
+                });
+                let exitButton = document.getElementById("exitButton");
+                exitButton.addEventListener("click", function (e) {
+                    popupList.innerHTML = "";
+                });
+            }
+
+            searchButton.addEventListener("click", function (e) {
+                searchButtonEvent();
             })
         },
-        lineup: function () {
+        lineup: async function () {
             let user = firebase.auth().currentUser;
 
             if (!user) {
                 console.log("NOT USER SIGNEDD IN");
                 return;
             }
-            let posterID = user.uid;
-
             let number = document.getElementById("numberOfPeople").value;
+            let selectedRestaurants = document.querySelectorAll("input:checked.selectRestaurant");
+            let restaurantsArray = Array.from(selectedRestaurants);
 
-            // "add" should be for each, but for the sake of the presentation, made it add.
-            $("input:checked.selectRestaurant").add((index, element) => {
-                const restaurantID = $(element).attr("dataId");
-                const number = document.getElementById("numberOfPeople").value;
+            addSignups();
+            updateWaitingStatus();
+            addNameToWaitlist();
+            addMyrequest();
 
-                db.collection("signup").add({
-                    posterID: user.uid,
-                    restaurantID: 1114,
-                    number,
-                    status: true
-                })
-                    .then((docRef) => {
-                        const requestID = docRef.id;
+            // Add each restaurant signup request 
+            function addSignups() {
 
+                let addRestaurant = async function (restaurant) {
+                    let restID = restaurant.getAttribute("dataId");
+                    let restDoc = await db.collection("restaurants").doc(restID).get();
+
+                    let restCode = restDoc.data().code;
+
+                    let currentSignupRequests = await db.collection("signup")
+                        .where("restaurantCode", "==", restCode)
+                        .where("posterID", "==", user.uid).get();
+                    currentSignupRequests.forEach(function (doc) {
+                        //LESSON: doc.ref reference to actual document
                         db.collection("users").doc(user.uid).update({
-                            myrequest: firebase.firestore.FieldValue.arrayUnion(requestID)
+                            myrequest: firebase.firestore.FieldValue.delete(doc.id)
                         })
-                            .then(() => {
-                                console.log("Request added to user's myrequest array");
-                            })
-                            .catch((error) => {
-                                console.error("Error updating user's myrequest array:", error);
-                            });
+                        doc.ref.delete();
+                    });
+
+                    let signupRequest = await db.collection("signup").add({
+                        posterID: user.uid,
+                        restaurantCode: restCode,
+                        number: number,
+                        status: true
                     })
-                    .catch((error) => {
-                        console.error("Error adding request:", error);
-                    });
-            });
-            if ($("input:checked.selectRestaurant").length > 0) {
-                db.collection("users").doc(user.uid).update({ waiting: true });
+                    let updateSuccess = await db.collection("users").doc(user.uid).update({
+                        myrequest: firebase.firestore.FieldValue.arrayUnion(signupRequest)
+                    })
+                }
+                restaurantsArray.forEach(function (restaurant) {
+                    addRestaurant(restaurant);
+                })
             }
-            $("input:checked.selectRestaurant").each(function (index) {
-                const restaurantID = $(this).attr("dataId");
-                db.collection("users").doc(user.uid).get().then(function (user) {
-                    db.collection("restaurants").doc(restaurantID).update({
-                        waitlist: firebase.firestore.FieldValue.arrayUnion(user.data().name)
-                    }).then((resolve) => console.log("Worked"));
-                })
-            });
-            db.collection("signup").get().then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    let use = db.collection("users").doc(user.uid);
-                    use.update({
-                        myrequest: firebase.firestore.FieldValue.arrayUnion(doc.id)
-                    }).then(() => {
-                        console.log("success");
-                    }).catch(() => {
-                        console.log("fail");
+
+            // Change user waiting status to true
+            function updateWaitingStatus() {
+
+                if (restaurantsArray.length > 0) {
+                    db.collection("users").doc(user.uid).update({ waiting: true });
+                }
+            }
+
+            //Add user name to restaurant doc waitlist
+            function addNameToWaitlist() {
+
+                let addNameToRest = async function (rest) {
+                    let restID = rest.getAttribute("dataId");
+                    let userDoc = await db.collection("users").doc(user.uid).get();
+                    let restDoc = await db.collection("restaurants").doc(restID);
+                    return await restDoc.update({
+                        waitlist: firebase.firestore.FieldValue.arrayUnion(userDoc.data().name)
                     });
+                }
+                restaurantsArray.forEach(function (rest) {
+                    addNameToRest(rest).then((resolve) => console.log(resolve));
                 })
-            })
+            }
+
+            //Add signup Id to user
+            async function addMyrequest() {
+                let signupColl = await db.collection("signup").get();
+                async function updateUser(signup) {
+                    if (signup.data().posterID == user.uid){
+                        let userDoc = await db.collection("users").doc(user.uid);
+                        userDoc.update({
+                            myrequest: firebase.firestore.FieldValue.arrayUnion(signup.id)
+                        }).then(() => {
+                            console.log("success");
+                        }).catch(() => {
+                            console.log("fail");
+                        });
+                    }
+                }
+                signupColl.forEach((signup) => {
+                    updateUser(signup);
+                });
+            }
         },
-        openConfirm: function () {
+        openConfirm: async function () {
             let user = firebase.auth().currentUser;
             let promise = new Promise(function (resolve, reject) {
                 setTimeout(() => resolve("done"), 1000);
@@ -284,27 +288,25 @@ let doAll =
     },
 
     helperFunc: {
-        insertNavbar: function () {
+        insertNavbar: async function () {
             let nav = document.getElementById("putNavbarHere");
-            ajaxGET("/components/navbar.html", function (data) {
-                nav.innerHTML = data;
 
-                const toggleBtn = document.querySelector('.navbar_toogleBtn');
-                const menu = document.querySelector('.navbar_menu');
-                const links = document.querySelector('.navbar_links');
+            let navbar = await ajaxGET("/components/navbar.html");
+            nav.innerHTML = navbar;
 
-                toggleBtn.addEventListener('click', () => {
-                    menu.classList.toggle('active');
-                    links.classList.toggle('active');
-                });
-                // let navbarMenu = document.querySelector(".navbar_menu").childNodes;
+            const toggleBtn = document.querySelector('.navbar_toogleBtn');
+            const menu = document.querySelector('.navbar_menu');
+            const links = document.querySelector('.navbar_links');
+
+            toggleBtn.addEventListener('click', () => {
+                menu.classList.toggle('active');
+                links.classList.toggle('active');
             });
         },
-        insertFooter: function () {
+        insertFooter: async function () {
             let footer = document.getElementById("putFooterHere");
-            ajaxGET("/components/footer.html", function (data) {
-                footer.innerHTML = data;
-            });
+            let footerData = await ajaxGET("/components/footer.html");
+            footer.innerHTML = footerData;
         }
     }
 }

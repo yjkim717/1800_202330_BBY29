@@ -4,7 +4,7 @@
  * 
  */
 
-function login() {
+async function login() {
     let email = $("#email").val();
     let password = $("#password").val();
     firebase.auth().signInWithEmailAndPassword(email, password)
