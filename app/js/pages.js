@@ -226,6 +226,7 @@ let doAll =
             let promise = new Promise(function (resolve, reject) {
                 setTimeout(() => resolve("done"), 1000);
             });
+            
             promise.then(function (result) {
                 ajaxGET("/components/alert.html", function (data) {
                     if (!document.getElementById("alert")) {

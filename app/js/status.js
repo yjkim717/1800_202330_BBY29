@@ -44,22 +44,27 @@ function displayWaitlistWithStatus(restaurantId, restaurantCode) {
                             var statusCell = row.insertCell(2);
                             var acceptCell = row.insertCell(3);
                             var declineCell = row.insertCell(4);
-
                             nameCell.textContent = userDoc.data().name;
 
                             fetchSignupInfo(userDoc.id, restaurantCode)
                                 .then(function (signupData) {
                                     var numGuests = signupData.number;
                                     numGuestCell.textContent = numGuests;
-
+                                    
                                     if (userDoc.data().waiting) {
                                         statusCell.innerHTML = '<div class="green-circle"></div> Waiting';
-
+                                        
                                         var acceptButton = document.createElement('button');
                                         acceptButton.textContent = 'Accept';
                                         acceptButton.addEventListener('click', function () {
-                                            console.log('Accepted: ' + userDoc.data().name);
-                                            db.collection('users').doc(userDoc.id).update({ waiting: false });
+                                            // console.log('Accepted: ' + userDoc.data().name);
+                                            db.collection('users').doc(userDoc.id).update({ 
+                                                waiting: false,
+                                                confirm: firebase.firestore.FieldValue.arrayUnion(restaurantId)
+                                            });
+                                            db.collection('restaurants').doc(restaurantId).update({
+                                                waitlist: firebase.firestore.FieldValue.delete(userDoc.data().name)
+                                            })
                                             statusCell.innerHTML = '<div class="red-circle"></div> Not Waiting';
                                             acceptCell.textContent = '--------';
                                             declineCell.textContent = '--------';
@@ -104,7 +109,7 @@ function fetchSignupInfo(userUid, restaurantCode) {
     return new Promise(function (resolve, reject) {
         db.collection('signup')
             .where('posterID', '==', userUid)
-            .where('restaurantID', '==', restaurantCode)
+            .where('restaurantCode', '==', restaurantCode)
             .get()
             .then(function (signupQuerySnapshot) {
                 signupQuerySnapshot.forEach(function (signupDoc) {
