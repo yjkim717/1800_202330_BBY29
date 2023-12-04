@@ -74,6 +74,10 @@ function displayWaitlistWithStatus(restaurantId, restaurantCode) {
                                         declineButton.textContent = 'Decline';
                                         declineButton.addEventListener('click', function () {
                                             console.log('Declined: ' + userDoc.data().name);
+                                            db.collection('restaurants').doc(restaurantId).update({
+                                                waitlist: firebase.firestore.FieldValue.delete(userDoc.data().name)
+                                            })
+                                            statusCell.innerHTML = '<div class="red-circle"></div> Not Waiting';
                                             acceptCell.textContent = '--------';
                                             declineCell.textContent = '--------';
                                         });
