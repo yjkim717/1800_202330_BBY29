@@ -1,3 +1,4 @@
+
 /* 
 Color Palette:
     purple: #EADDFF
@@ -82,13 +83,14 @@ body {
     font-size: 25px;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px){ 
 
 }
 
 @media screen and (min-width: 769px){
 
 }
+
 
 #logoText {
     font-family: 'Pacifico';
@@ -116,7 +118,7 @@ Appearance:
 .bg-info {
     background-color: #E6E0E9 !important;
     /* Medium shade for navbar */
-    filter: blur(5px);
+filter: blur(5px);
 }
 
 .navbar-light .navbar-brand,
@@ -186,6 +188,7 @@ Appearance:
     font-size: 15px;
     font-weight: 300;
 }
+
 
 /*
 --------------
@@ -265,3 +268,7 @@ body {
 #target {
     width: 345px;
 } */
+
+
+
+
