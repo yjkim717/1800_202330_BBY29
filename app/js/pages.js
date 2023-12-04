@@ -29,7 +29,7 @@ let doAll =
 
             let data = await ajaxGET(`/components/${authStyle}.html`);
             signinContainer.innerHTML = data;
-            await doAll.entryFunc.completeButton(`${authStyle}SubmitButton`, `${authStyle}`);
+            doAll.entryFunc.completeButton(`${authStyle}SubmitButton`, `${authStyle}`);
             document.addEventListener('keydown', (event) => {
                 if (event.key == "Enter") {
                     document.getElementById(`${authStyle}SubmitButton`).click();
@@ -51,6 +51,7 @@ let doAll =
                 if (signinSuccess) {
                     const currentUserId = firebase.auth().currentUser.uid;
                     window.location.href = domain + "/map?userId=" + currentUserId;
+                    return "Sign in Success";
                 } else {
                     return "Sign in failed";
                 }
@@ -93,38 +94,63 @@ let doAll =
 
     mapFunc: {
         doAllMap: async function () {
-            await doAll.helperFunc.insertNavbar();
-            await doAll.helperFunc.insertFooter();
-            let popupList = document.getElementById("putRestaurantHere");
-            let searchButton = document.getElementById("searchButton");
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    doThem(firebase.auth().currentUser);
+                } else {
+                    alert("Not Signed in");
+                    return;
+                }
+            });
+            async function doThem(user) {
+                await doAll.helperFunc.insertNavbar();
+                await doAll.helperFunc.insertFooter();
+                let popupList = document.getElementById("putRestaurantHere");
+                let searchButton = document.getElementById("searchButton");
 
-            let searchButtonEvent = async function () {
-                let listData = await ajaxGET("/components/restaurantList.html");
-                popupList.innerHTML = listData;
-                let restaurantTemplate = document.getElementById("restaurantTemplate");
-                let querySnapshot = await db.collection("restaurants").get();
-                querySnapshot.forEach((doc) => {
-                    //template elements don't have child nodes until you grab its ".content"
-                    let rest = restaurantTemplate.content.cloneNode(true);
-                    let restData = doc.data();
-                    rest.getElementById(`restaurantName`).innerHTML = restData.name;
-                    rest.getElementById(`restaurantCheckBox`).setAttribute("dataId", doc.id);
-                    document.getElementById("restaurantListContainer").append(rest);
+                searchButton.addEventListener("click", function (e) {
+                    searchButtonEvent();
+                })
 
-                });
-                document.getElementById("requestButton").addEventListener("click", function (e) {
-                    doAll.mapFunc.lineup();
-                    doAll.mapFunc.openConfirm();
-                });
-                let exitButton = document.getElementById("exitButton");
-                exitButton.addEventListener("click", function (e) {
-                    popupList.innerHTML = "";
-                });
+                db.collection("users").doc(user.uid).onSnapshot(function (doc) {
+                    respond(doc);
+                })
+
+                let searchButtonEvent = async function () {
+                    let listData = await ajaxGET("/components/restaurantList.html");
+                    popupList.innerHTML = listData;
+                    let restaurantTemplate = document.getElementById("restaurantTemplate");
+                    let querySnapshot = await db.collection("restaurants").get();
+                    querySnapshot.forEach((doc) => {
+                        //template elements don't have child nodes until you grab its ".content"
+                        let rest = restaurantTemplate.content.cloneNode(true);
+                        let restData = doc.data();
+                        rest.getElementById(`restaurantName`).innerHTML = restData.name;
+                        rest.getElementById(`restaurantCheckBox`).setAttribute("dataId", doc.id);
+                        document.getElementById("restaurantListContainer").append(rest);
+
+                    });
+                    document.getElementById("requestButton").addEventListener("click", function (e) {
+                        doAll.mapFunc.lineup();
+                    });
+                    let exitButton = document.getElementById("exitButton");
+                    exitButton.addEventListener("click", function (e) {
+                        popupList.innerHTML = "";
+                    });
+                }
+
+                async function respond(doc) {
+                    if (doc.data().confirm.length > 0) {
+                        let restaurantCode = await db.collection("restaurants").doc(doc.data().confirm[0]).get();
+                        restaurantCode = restaurantCode.data().code;
+                        let signup = db.collection("signup").where("restaurandCode", "==", restaurantCode).where("posterID", "==", user.uid).get();
+
+                        //Soon to update namespace
+
+                        doAll.mapFunc.openConfirm(signup.id, doc.data().confirm[0]);
+                    }
+                }
             }
-
-            searchButton.addEventListener("click", function (e) {
-                searchButtonEvent();
-            })
         },
         lineup: async function () {
             let user = firebase.auth().currentUser;
@@ -205,7 +231,7 @@ let doAll =
             async function addMyrequest() {
                 let signupColl = await db.collection("signup").get();
                 async function updateUser(signup) {
-                    if (signup.data().posterID == user.uid){
+                    if (signup.data().posterID == user.uid) {
                         let userDoc = await db.collection("users").doc(user.uid);
                         userDoc.update({
                             myrequest: firebase.firestore.FieldValue.arrayUnion(signup.id)
@@ -221,69 +247,83 @@ let doAll =
                 });
             }
         },
-        openConfirm: async function () {
+        openConfirm: async function (signupID, restaurantID) {
             let user = firebase.auth().currentUser;
-            let promise = new Promise(function (resolve, reject) {
-                setTimeout(() => resolve("done"), 1000);
-            });
-            
-            promise.then(function (result) {
-                ajaxGET("/components/alert.html", function (data) {
-                    if (!document.getElementById("alert")) {
-                        document.body.insertAdjacentHTML("beforeend", data);
-                    }
-                    let alert = document.getElementById("alert");
-                    if (alert) {
-                        alert.querySelector("#decline").addEventListener("click", function (e) {
-                            // Nothing here because we need id of restaurant that is being declined
-                            document.body.removeChild(alert);
-                            document.body.removeChild(document.getElementById("alertBubbles"));
-                            showWaitingMessage();
-                        });
-                        alert.querySelector("#accept").addEventListener("click", function (e) {
-                            db.collection("users").doc(user.uid).update({
-                                waiting: false,
-                                myrequest: []
-                            });
-                            let restWithName = [];
-                            // Remove name from waitlist after clicking confirm
-                            db.collection("users").doc(user.uid).get().then(function (user) {
-                                db.collection("restaurants").get().then(function (querySnapshot) {
-                                    querySnapshot.forEach(function (rest) {
-                                        if (rest.data().waitlist.includes(user.data().name)) {
-                                            restWithName.push(rest.id);
-                                        }
-                                    });
-                                    restWithName.forEach(function (restID) {
-                                        db.collection("restaurants").doc(restID).update({
-                                            waitlist: firebase.firestore.FieldValue.arrayRemove(`${user.data().name}`)
-                                        })
-                                    })
-                                })
-                            })
+            let userDoc = await db.collection("users").doc(user.uid).get();
+            let signupDoc = await db.collection("signup").doc(signupID).get();
+            let restaurantDoc = await db.collection("restaurants").doc(restaurantID).get();
 
-                            let requestsDelete = [];
-                            db.collection("signup").get().then((querySnapshot) => {
-                                querySnapshot.forEach((doc) => {
-                                    let posterID = doc.data().posterID;
-                                    if (user.uid == posterID) {
-                                        console.log(doc.id);
-                                        requestsDelete.push(doc.id);
-                                    }
-                                });
-                                requestsDelete.forEach(function (data) {
-                                    db.collection("signup").doc(data).delete().then(() => console.log("Delete success"));
-                                })
-                            });
-                            db.collection("restaurants")
-                            //Send confirmation request to restaurant
-                            document.body.removeChild(alert);
-                            document.body.removeChild(document.getElementById("alertBubbles"));
-                        });
-                    }
+            let alertHTML = await ajaxGET("/components/alert.html");
+            document.body.insertAdjacentHTML("beforeend", alertHTML);
+
+            addDeclineButton();
+            addAcceptButton();
+
+
+
+            function addDeclineButton() {
+                document.querySelector("#decline").addEventListener("click", function (e) {
+                    decline();
                 });
 
-            });
+                async function decline() {
+                    db.collection("users").doc(user.uid).update({
+                        myrequest: firebase.firestore.FieldValue.delete(signupID),
+                        confirm: firebase.firestore.FieldValue.arrayRemove(restaurantID)
+                    });
+                    let signups = await db.collection("signup")
+                        .where("posterID", "==", user.uid)
+                        .where("restaurantCode", "==", restaurantDoc.data().code)
+                        .get();
+                    
+                    signups.forEach(function (data) {
+                        data.ref.delete();
+                    })
+                    document.body.removeChild(document.getElementById("alert"));
+                    document.body.removeChild(document.getElementById("alertBubbles"));
+                    showWaitingMessage();
+                }
+            }
+
+            function addAcceptButton() {
+                document.querySelector("#accept").addEventListener("click", function (e) {
+                    clearUser();
+                    clearWaitlist();
+                    clearSignup();
+                    document.body.removeChild(document.getElementById("alert"));
+                    document.body.removeChild(document.getElementById("alertBubbles"));
+                });
+
+                //Sets user waiting status to false, and clears their line up request list
+                function clearUser() {
+                    db.collection("users").doc(user.uid).update({
+                        waiting: false,
+                        myrequest: [],
+                        confirm: []
+                    });
+                }
+
+                //Deletes user's name from all restaurants' waitlist
+                async function clearWaitlist() {
+
+                    let restaurantsWithUser = await db.collection("restaurants")
+                        .where("waitlist", "array-contains", userDoc.data().name).get();
+
+                    restaurantsWithUser.forEach(function (data) {
+                        data.ref.update({
+                            waitlist: firebase.firestore.FieldValue.delete(userDoc.data().name)
+                        })
+                    })
+                }
+
+                //Deletes all signup requests made by user
+                async function clearSignup() {
+                    let signupDocs = await db.collection("signup").where("posterID", "==", user.uid).get();
+                    signupDocs.forEach(function (data) {
+                        data.ref.delete();
+                    })
+                }
+            }
         },
 
     },
@@ -317,7 +357,7 @@ let doAll =
 
 //TODO: when readSignup call change the status to false and remove from db
 function readSignup() {
-    console.log("write signup");
+    // console.log("write signup");
     let posterID = db.collection("users").doc(user.uid);
     let restaurantID = db.collection("restaurants").doc(restaurant.rid);
     let number = document.getElementById("numberOfPeople").value;

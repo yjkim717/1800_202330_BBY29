@@ -59,7 +59,6 @@ function displayWaitlistWithStatus(restaurantId, restaurantCode) {
                                         acceptButton.addEventListener('click', function () {
                                             // console.log('Accepted: ' + userDoc.data().name);
                                             db.collection('users').doc(userDoc.id).update({ 
-                                                waiting: false,
                                                 confirm: firebase.firestore.FieldValue.arrayUnion(restaurantId)
                                             });
                                             db.collection('restaurants').doc(restaurantId).update({
