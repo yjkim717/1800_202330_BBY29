@@ -1,4 +1,3 @@
-
 /* 
 Color Palette:
     purple: #EADDFF
@@ -25,6 +24,63 @@ body {
     font-family: Roboto;
 }
 
+.termscondition .box{
+   height: 100%;
+   width: 85%;
+   margin-top: 10px;
+   margin-bottom: 10px;
+   margin-left: 125px;
+   z-index: 10;
+   display: flex;
+   position:relative;
+   border-radius: 20px;
+   border: 5px;
+   backdrop-filter: blur(100px); /*important*/
+   font-size: 18px;
+}
+.termscondition .nav{
+    margin-left: 20px;
+}
+.termscondition .box .heading{
+    text-align:center;
+    font-size: 30px;
+}
+.termscondition .box .registration{
+    margin-left: 15px;
+    font-size: 25px;
+}
+.termscondition .box .acceptable{
+    margin-left: 15px;
+    font-size: 25px;
+}
+.termscondition .box .property{
+    margin-left: 15px;
+    font-size: 25px;
+}
+.termscondition .box .privacy{
+    margin-left: 15px;
+    font-size: 25px;
+}
+.termscondition .box .termination{
+    margin-left: 15px;
+    font-size: 25px;
+}
+.termscondition .box .limitations{
+    margin-left: 15px;
+    font-size: 25px;
+}
+.termscondition .box .law{
+    margin-left: 15px;
+    font-size: 25px;
+}
+.termscondition .box .terms{
+    margin-left: 15px;
+    font-size: 25px;
+}
+.termscondition .box .contact{
+    margin-left: 15px;
+    font-size: 25px;
+}
 
 @media screen and (max-width: 768px){
 
@@ -33,7 +89,6 @@ body {
 @media screen and (min-width: 769px){
 
 }
-
 
 #logoText {
     font-family: 'Pacifico';
@@ -61,6 +116,7 @@ Appearance:
 .bg-info {
     background-color: #E6E0E9 !important;
     /* Medium shade for navbar */
+    filter: blur(5px);
 }
 
 .navbar-light .navbar-brand,
@@ -130,7 +186,6 @@ Appearance:
     font-size: 15px;
     font-weight: 300;
 }
-
 
 /*
 --------------
@@ -210,7 +265,3 @@ body {
 #target {
     width: 345px;
 } */
-
-
-
-
