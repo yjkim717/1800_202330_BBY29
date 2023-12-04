@@ -14,8 +14,8 @@ async function loadGoogleMapsAPI() {
 
 function initMap() {
     const map = new google.maps.Map(document.getElementById('putMapHere'), {
-        center: { lat: 49.2827, lng: -123.1207 }, //vancouver
-        zoom: 13,
+        center: { lat: 49.2527, lng: -123.0034 }, //BCIT
+        zoom: 14,
         fullscreenControl: false,
         streetViewControl: false,
         mapTypeControl: false,
