@@ -29,6 +29,9 @@
   <img src="/public/img/readme.png" alt="Product Name Screen Shot" height="500" align="center">
 </div>
 
+*  Figma (https://www.figma.com/file/B7fogIxOjkUtkMsiq6DjvY/1800_202330_BBY29?type=design&node-id=270%3A2226&mode=design&t=hTIRFJBwu2RBIxPE-1)
+*  Trello(https://trello.com/invite/b/PihnA751/ATTIe34defd09004899d49bb41412851be082FEDCB61/1800202330bby29)
+
 ## CapWise
 
 * [General info](#general-info)
@@ -102,10 +105,11 @@ It has the following subfolders and files:
 ```
 
 ## Limitations
-- known bugs
+- restaurant side developement
 
 ## Resources
-- In-app icons from Feather v4.28.0 (Open Source https://feathericons.com/)
+- some of in-app icons from font awesome (https://fontawesome.com/icons)
+- firebase
 - Logo homemade!
 
 ## Contact
@@ -121,11 +125,8 @@ It has the following subfolders and files:
 ## Acknowledgements
     -Use window.location.href when synchronously reloading an entire page (redirecting to different page)
     -Use http request when asynchronously rendering a component
-    -Use fontawesome for icons in team.html
 * <a href="https://fontawesome.com/">Font Awesome</a>
-* <a href="https://fonts.adobe.com/">Adobe Fonts</a>
 * <a href="https://fonts.google.com/">Google Fonts</a>
-* <a href="https://stock.adobe.com/images">Adobe Stock Images</a>
 * <a href="https://getbootstrap.com/">Bootstrap</a>
 
 
